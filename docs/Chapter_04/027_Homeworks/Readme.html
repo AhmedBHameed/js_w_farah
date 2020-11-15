@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Readme.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+    <style>
+      /*---------------------------------------------------------------------------------------------
+		 *  Copyright (c) Microsoft Corporation. All rights reserved.
+		 *  Licensed under the MIT License. See License.txt in the project root for license information.
+		 *--------------------------------------------------------------------------------------------*/
+
+      body {
+        font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light",
+          "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+        font-size: 14px;
+        padding: 0 12px;
+        line-height: 22px;
+        word-wrap: break-word;
+        background: #3d3d3d;
+        color: white;
+      }
+
+      #code-csp-warning {
+        position: fixed;
+        top: 0;
+        right: 0;
+        color: white;
+        margin: 16px;
+        text-align: center;
+        font-size: 12px;
+        font-family: sans-serif;
+        background-color: #444444;
+        cursor: pointer;
+        padding: 6px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+      }
+
+      #code-csp-warning:hover {
+        text-decoration: none;
+        background-color: #007acc;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+
+      body.scrollBeyondLastLine {
+        margin-bottom: calc(100vh - 22px);
+      }
+
+      body.showEditorSelection .code-line {
+        position: relative;
+      }
+
+      body.showEditorSelection .code-active-line:before,
+      body.showEditorSelection .code-line:hover:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -12px;
+        height: 100%;
+      }
+
+      body.showEditorSelection li.code-active-line:before,
+      body.showEditorSelection li.code-line:hover:before {
+        left: -30px;
+      }
+
+      .vscode-light.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.15);
+      }
+
+      .vscode-light.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 160, 0, 0.7);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 160, 0, 1);
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      a {
+        color: #4080d0;
+        text-decoration: none;
+      }
+
+      a:focus,
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 1px solid -webkit-focus-ring-color;
+        outline-offset: -1px;
+      }
+
+      hr {
+        border: 0;
+        height: 2px;
+        border-bottom: 2px solid;
+      }
+
+      h1 {
+        padding-bottom: 0.3em;
+        line-height: 1.2;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: normal;
+      }
+
+      h1 code,
+      h2 code,
+      h3 code,
+      h4 code,
+      h5 code,
+      h6 code {
+        font-size: inherit;
+        line-height: auto;
+      }
+
+      a:hover {
+        color: #4080d0;
+        text-decoration: underline;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      table > thead > tr > th {
+        text-align: left;
+        border-bottom: 1px solid;
+      }
+
+      table > thead > tr > th,
+      table > thead > tr > td,
+      table > tbody > tr > th,
+      table > tbody > tr > td {
+        padding: 5px 10px;
+      }
+
+      table > tbody > tr + tr > td {
+        border-top: 1px solid;
+      }
+
+      blockquote {
+        margin: 0 7px 0 5px;
+        padding: 0 16px 0 10px;
+        border-left: 5px solid;
+      }
+
+      code {
+        font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New",
+          monospace, "Droid Sans Fallback";
+        font-size: 14px;
+        line-height: 19px;
+      }
+
+      body.wordWrap pre {
+        white-space: pre-wrap;
+      }
+
+      .mac code {
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      pre:not(.hljs),
+      pre.hljs code > div {
+        padding: 16px;
+        border-radius: 3px;
+        overflow: auto;
+      }
+
+      /** Theming */
+
+      .vscode-light,
+      .vscode-light pre code {
+        color: rgb(30, 30, 30);
+      }
+
+      .vscode-dark,
+      .vscode-dark pre code {
+        color: #ddd;
+      }
+
+      .vscode-high-contrast,
+      .vscode-high-contrast pre code {
+        color: white;
+      }
+
+      .vscode-light code {
+        color: #a31515;
+      }
+
+      .vscode-dark code {
+        color: #d7ba7d;
+      }
+
+      .vscode-light pre:not(.hljs),
+      .vscode-light code > div {
+        background-color: rgba(220, 220, 220, 0.4);
+      }
+
+      .vscode-dark pre:not(.hljs),
+      .vscode-dark code > div {
+        background-color: rgba(10, 10, 10, 0.4);
+      }
+
+      .vscode-high-contrast pre:not(.hljs),
+      .vscode-high-contrast code > div {
+        background-color: rgb(0, 0, 0);
+      }
+
+      .vscode-high-contrast h1 {
+        border-color: rgb(0, 0, 0);
+      }
+
+      .vscode-light table > thead > tr > th {
+        border-color: rgba(0, 0, 0, 0.69);
+      }
+
+      .vscode-dark table > thead > tr > th {
+        border-color: rgba(255, 255, 255, 0.69);
+      }
+
+      .vscode-light h1,
+      .vscode-light hr,
+      .vscode-light table > tbody > tr + tr > td {
+        border-color: rgba(0, 0, 0, 0.18);
+      }
+
+      .vscode-dark h1,
+      .vscode-dark hr,
+      .vscode-dark table > tbody > tr + tr > td {
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .vscode-light blockquote,
+      .vscode-dark blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .vscode-high-contrast blockquote {
+        background: transparent;
+        border-color: #fff;
+      }
+    </style>
+
+    <style>
+      /* Tomorrow Theme */
+      /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+      /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        color: #4d4d4c;
+        padding: 0.5em;
+      }
+
+      .hljs-emphasis {
+        font-style: italic;
+      }
+
+      .hljs-strong {
+        font-weight: bold;
+      }
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        padding: 0.5em;
+        background: #1e1e1e;
+        color: #dcdcdc;
+      }
+      .hljs-keyword,
+      .hljs-literal,
+      .hljs-symbol,
+      .hljs-name {
+        color: #569cd6;
+      }
+      .hljs-link {
+        color: #569cd6;
+        text-decoration: underline;
+      }
+      .hljs-built_in,
+      .hljs-type {
+        color: #4ec9b0;
+      }
+      .hljs-number,
+      .hljs-class {
+        color: #b8d7a3;
+      }
+      .hljs-string,
+      .hljs-meta-string {
+        color: #d69d85;
+      }
+      .hljs-regexp,
+      .hljs-template-tag {
+        color: #9a5334;
+      }
+      .hljs-subst,
+      .hljs-function,
+      .hljs-title,
+      .hljs-params,
+      .hljs-formula {
+        color: #dcdcdc;
+      }
+      .hljs-comment,
+      .hljs-quote {
+        color: #57a64a;
+        font-style: italic;
+      }
+      .hljs-doctag {
+        color: #608b4e;
+      }
+      .hljs-meta,
+      .hljs-meta-keyword,
+      .hljs-tag {
+        color: #9b9b9b;
+      }
+      .hljs-variable,
+      .hljs-template-variable {
+        color: #bd63c5;
+      }
+      .hljs-attr,
+      .hljs-attribute,
+      .hljs-builtin-name {
+        color: #9cdcfe;
+      }
+      .hljs-section {
+        color: gold;
+      }
+      .hljs-emphasis {
+        font-style: italic;
+      }
+      .hljs-strong {
+        font-weight: bold;
+      }
+      .hljs-bullet,
+      .hljs-selector-tag,
+      .hljs-selector-id,
+      .hljs-selector-class,
+      .hljs-selector-attr,
+      .hljs-selector-pseudo {
+        color: #d7ba7d;
+      }
+      .hljs-addition {
+        background-color: #144212;
+        display: inline-block;
+        width: 100%;
+      }
+      .hljs-deletion {
+        background-color: #600;
+        display: inline-block;
+        width: 100%;
+      }
+    </style>
+
+    <style>
+      /*
+		 * Markdown PDF CSS
+		 */
+
+      body {
+        font-family: "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light",
+          "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+      }
+
+      pre {
+        background-color: #f8f8f8;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
+
+      pre:not(.hljs) {
+        padding: 23px;
+        line-height: 19px;
+      }
+
+      blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .emoji {
+        height: 1.4em;
+      }
+
+      /* for inline code */
+      :not(pre):not(.hljs) > code {
+        color: #c9ae75; /* Change the old color so it seems less like an error */
+        font-size: inherit;
+      }
+
+      /* Page Break : use <div class="page"/> to insert page break
+		-------------------------------------------------------- */
+      .page {
+        page-break-after: always;
+      }
+    </style>
+
+    <style>
+      .nav-container {
+        border: 2px solid white;
+        border-radius: 10px;
+        margin: 50px 0;
+        padding: 0 100px;
+      }
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px;
+        align-items: center;
+        font-weight: bold;
+      }
+      .navigation a {
+        color: red;
+        cursor: pointer;
+      }
+      .prev.no-link,
+      .next.no-link {
+        color: gray;
+        cursor: default;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="chapter-4-example">Chapter 4 example</h1>
+    <p>
+      example found in
+      <strong
+        ><a href="../Examples/c04/example.html"
+          >Examples/c04/example.html</a
+        ></strong
+      >
+    </p>
+    <p><strong>JavaScript</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-keyword">var</span> table = <span class="hljs-number">3</span>; <span class="hljs-comment">// Unit of table</span>
+<span class="hljs-keyword">var</span> operator = <span class="hljs-string">"addition"</span>; <span class="hljs-comment">// Type of calculation by default.</span>
+<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; <span class="hljs-comment">// Set counter to 1 or you can make it empty since it is assigned inside the drawOnHTML function</span>
+<span class="hljs-keyword">var</span> msg = <span class="hljs-string">""</span>; <span class="hljs-comment">// Message</span>
+<span class="hljs-keyword">var</span> el = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"blackboard"</span>); <span class="hljs-comment">// Make a cache for the HTML element that has id of "blackboard"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calculate</span>(<span class="hljs-params">iteration, operation, table</span>) </span>{
+  <span class="hljs-keyword">let</span> result = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">switch</span> (operation) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"/"</span>:
+      result = (iteration / table).toFixed(<span class="hljs-number">2</span>);
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"-"</span>:
+      result = iteration - table;
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"*"</span>:
+      result = iteration * table;
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+      result = iteration + table;
+      <span class="hljs-keyword">break</span>;
+  }
+  <span class="hljs-keyword">return</span> result;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span>(<span class="hljs-params">op</span>) </span>{
+  <span class="hljs-keyword">switch</span> (op) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"subtraction"</span>:
+      operator = <span class="hljs-string">"-"</span>;
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"multiplication"</span>:
+      operator = <span class="hljs-string">"*"</span>;
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"division"</span>:
+      operator = <span class="hljs-string">"/"</span>;
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+      operator = <span class="hljs-string">"+"</span>;
+  }
+  drawOnHTML();
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">drawOnHTML</span>(<span class="hljs-params"></span>) </span>{
+  i = <span class="hljs-number">1</span>;
+  msg = <span class="hljs-string">""</span>;
+
+  <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">11</span>) {
+    msg +=
+      i +
+      <span class="hljs-string">" "</span> +
+      operator +
+      <span class="hljs-string">" "</span> +
+      table +
+      <span class="hljs-string">" = "</span> +
+      calculate(i, operator, table) +
+      <span class="hljs-string">"&lt;br /&gt;"</span>;
+    i++;
+  }
+
+  el.innerHTML = msg; <span class="hljs-comment">// By using the object of HTML element that we've cached, we can inject HTML into it.</span>
+}
+
+<span class="hljs-comment">// This is the first call since the function is not executed at first so we have to call it at the first time of page loading.</span>
+render();
+</div></code></pre>
+    <h2 id="homework01">HOMEWORK_01</h2>
+    <p>
+      Write a simple webpage that show the images of cats [In row] with a nice
+      way using your technique of HTML and CSS. The images URL can be found
+      bellow in the <code>Array of objects</code> as a response from the server.
+      After showing the images, Add the name of the image bellow each image.
+      Example:
+    </p>
+    <p>
+      Name: <code>tumblr_m3o5vhPKBa1rtuomto1_250.jpg</code> Another example:
+      Name: <code>3v7.gif</code>
+    </p>
+    <p>
+      Use what you've learned from this chapter to implement the fewest code of
+      implementation.
+    </p>
+    <pre class="hljs"><code><div>[
+  {
+    <span class="hljs-attr">breeds</span>: [],
+    <span class="hljs-attr">id</span>: <span class="hljs-string">"2f9"</span>,
+    <span class="hljs-attr">url</span>: <span class="hljs-string">"https://26.media.tumblr.com/tumblr_m3o5vhPKBa1rtuomto1_250.jpg"</span>,
+    <span class="hljs-attr">width</span>: <span class="hljs-number">500</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-number">333</span>
+  },
+  {
+    <span class="hljs-attr">breeds</span>: [],
+    <span class="hljs-attr">id</span>: <span class="hljs-string">"3h0"</span>,
+    <span class="hljs-attr">url</span>: <span class="hljs-string">"https://25.media.tumblr.com/tumblr_m3kg02GkLw1qjc1a7o1_250.jpg"</span>,
+    <span class="hljs-attr">width</span>: <span class="hljs-number">900</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-number">600</span>
+  },
+  {
+    <span class="hljs-attr">breeds</span>: [],
+    <span class="hljs-attr">id</span>: <span class="hljs-string">"3v7"</span>,
+    <span class="hljs-attr">url</span>: <span class="hljs-string">"https://cdn2.thecatapi.com/images/3v7.gif"</span>,
+    <span class="hljs-attr">width</span>: <span class="hljs-number">245</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-number">245</span>
+  },
+  {
+    <span class="hljs-attr">breeds</span>: [],
+    <span class="hljs-attr">id</span>: <span class="hljs-string">"58l"</span>,
+    <span class="hljs-attr">url</span>: <span class="hljs-string">"https://25.media.tumblr.com/tumblr_kop8wzgxHa1qzv5pwo1_250.jpg"</span>,
+    <span class="hljs-attr">width</span>: <span class="hljs-number">385</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-number">500</span>
+  },
+  {
+    <span class="hljs-attr">breeds</span>: [],
+    <span class="hljs-attr">id</span>: <span class="hljs-string">"9qn"</span>,
+    <span class="hljs-attr">url</span>: <span class="hljs-string">"https://24.media.tumblr.com/tumblr_m27vjmHY8Y1qh66wqo1_250.png"</span>,
+    <span class="hljs-attr">width</span>: <span class="hljs-number">600</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-number">800</span>
+  },
+  {
+    <span class="hljs-attr">breeds</span>: [],
+    <span class="hljs-attr">id</span>: <span class="hljs-string">"aad"</span>,
+    <span class="hljs-attr">url</span>: <span class="hljs-string">"https://24.media.tumblr.com/tumblr_m1vu8mrE0z1qze0hyo1_250.jpg"</span>,
+    <span class="hljs-attr">width</span>: <span class="hljs-number">1344</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-number">1008</span>
+  },
+  {
+    <span class="hljs-attr">breeds</span>: [],
+    <span class="hljs-attr">id</span>: <span class="hljs-string">"ae4"</span>,
+    <span class="hljs-attr">url</span>: <span class="hljs-string">"https://cdn2.thecatapi.com/images/ae4.gif"</span>,
+    <span class="hljs-attr">width</span>: <span class="hljs-number">430</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-number">242</span>
+  },
+  {
+    <span class="hljs-attr">breeds</span>: [],
+    <span class="hljs-attr">id</span>: <span class="hljs-string">"auf"</span>,
+    <span class="hljs-attr">url</span>: <span class="hljs-string">"https://25.media.tumblr.com/tumblr_m0v0feUY3X1qzwfgto1_250.png"</span>,
+    <span class="hljs-attr">width</span>: <span class="hljs-number">561</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-number">554</span>
+  },
+  {
+    <span class="hljs-attr">breeds</span>: [],
+    <span class="hljs-attr">id</span>: <span class="hljs-string">"dqn"</span>,
+    <span class="hljs-attr">url</span>: <span class="hljs-string">"https://25.media.tumblr.com/tumblr_m4f8t9JGy11qejbiro1_250.jpg"</span>,
+    <span class="hljs-attr">width</span>: <span class="hljs-number">560</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-number">480</span>
+  }
+];
+</div></code></pre>
+    <div class="nav-container">
+      <h3>Navigate to:</h3>
+      <div class="navigation">
+        <a class="prev" href="../026_Loops/Readme.html">
+          Previous
+        </a>
+        <a class="next" href="../../index.html">
+          Return to main menu
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Readme.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+    <style>
+      /*---------------------------------------------------------------------------------------------
+*  Copyright (c) Microsoft Corporation. All rights reserved.
+*  Licensed under the MIT License. See License.txt in the project root for license information.
+*--------------------------------------------------------------------------------------------*/
+
+      body {
+        font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light",
+          "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+        font-size: 14px;
+        padding: 0 12px;
+        line-height: 22px;
+        word-wrap: break-word;
+        background: #3d3d3d;
+        color: white;
+      }
+
+      #code-csp-warning {
+        position: fixed;
+        top: 0;
+        right: 0;
+        color: white;
+        margin: 16px;
+        text-align: center;
+        font-size: 12px;
+        font-family: sans-serif;
+        background-color: #444444;
+        cursor: pointer;
+        padding: 6px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+      }
+
+      #code-csp-warning:hover {
+        text-decoration: none;
+        background-color: #007acc;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+
+      body.scrollBeyondLastLine {
+        margin-bottom: calc(100vh - 22px);
+      }
+
+      body.showEditorSelection .code-line {
+        position: relative;
+      }
+
+      body.showEditorSelection .code-active-line:before,
+      body.showEditorSelection .code-line:hover:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -12px;
+        height: 100%;
+      }
+
+      body.showEditorSelection li.code-active-line:before,
+      body.showEditorSelection li.code-line:hover:before {
+        left: -30px;
+      }
+
+      .vscode-light.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.15);
+      }
+
+      .vscode-light.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 160, 0, 0.7);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 160, 0, 1);
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      a {
+        color: #4080d0;
+        text-decoration: none;
+      }
+
+      a:focus,
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 1px solid -webkit-focus-ring-color;
+        outline-offset: -1px;
+      }
+
+      hr {
+        border: 0;
+        height: 2px;
+        border-bottom: 2px solid;
+      }
+
+      h1 {
+        padding-bottom: 0.3em;
+        line-height: 1.2;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: normal;
+      }
+
+      h1 code,
+      h2 code,
+      h3 code,
+      h4 code,
+      h5 code,
+      h6 code {
+        font-size: inherit;
+        line-height: auto;
+      }
+
+      a:hover {
+        color: #4080d0;
+        text-decoration: underline;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      table > thead > tr > th {
+        text-align: left;
+        border-bottom: 1px solid;
+      }
+
+      table > thead > tr > th,
+      table > thead > tr > td,
+      table > tbody > tr > th,
+      table > tbody > tr > td {
+        padding: 5px 10px;
+      }
+
+      table > tbody > tr + tr > td {
+        border-top: 1px solid;
+      }
+
+      blockquote {
+        margin: 0 7px 0 5px;
+        padding: 0 16px 0 10px;
+        border-left: 5px solid;
+      }
+
+      code {
+        font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New",
+          monospace, "Droid Sans Fallback";
+        font-size: 14px;
+        line-height: 19px;
+      }
+
+      body.wordWrap pre {
+        white-space: pre-wrap;
+      }
+
+      .mac code {
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      pre:not(.hljs),
+      pre.hljs code > div {
+        padding: 16px;
+        border-radius: 3px;
+        overflow: auto;
+      }
+
+      /** Theming */
+
+      .vscode-light,
+      .vscode-light pre code {
+        color: rgb(30, 30, 30);
+      }
+
+      .vscode-dark,
+      .vscode-dark pre code {
+        color: #ddd;
+      }
+
+      .vscode-high-contrast,
+      .vscode-high-contrast pre code {
+        color: white;
+      }
+
+      .vscode-light code {
+        color: #a31515;
+      }
+
+      .vscode-dark code {
+        color: #d7ba7d;
+      }
+
+      .vscode-light pre:not(.hljs),
+      .vscode-light code > div {
+        background-color: rgba(220, 220, 220, 0.4);
+      }
+
+      .vscode-dark pre:not(.hljs),
+      .vscode-dark code > div {
+        background-color: rgba(10, 10, 10, 0.4);
+      }
+
+      .vscode-high-contrast pre:not(.hljs),
+      .vscode-high-contrast code > div {
+        background-color: rgb(0, 0, 0);
+      }
+
+      .vscode-high-contrast h1 {
+        border-color: rgb(0, 0, 0);
+      }
+
+      .vscode-light table > thead > tr > th {
+        border-color: rgba(0, 0, 0, 0.69);
+      }
+
+      .vscode-dark table > thead > tr > th {
+        border-color: rgba(255, 255, 255, 0.69);
+      }
+
+      .vscode-light h1,
+      .vscode-light hr,
+      .vscode-light table > tbody > tr + tr > td {
+        border-color: rgba(0, 0, 0, 0.18);
+      }
+
+      .vscode-dark h1,
+      .vscode-dark hr,
+      .vscode-dark table > tbody > tr + tr > td {
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .vscode-light blockquote,
+      .vscode-dark blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .vscode-high-contrast blockquote {
+        background: transparent;
+        border-color: #fff;
+      }
+    </style>
+
+    <style>
+      /* Tomorrow Theme */
+      /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+      /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        color: #4d4d4c;
+        padding: 0.5em;
+      }
+
+      .hljs-emphasis {
+        font-style: italic;
+      }
+
+      .hljs-strong {
+        font-weight: bold;
+      }
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        padding: 0.5em;
+        background: #1e1e1e;
+        color: #dcdcdc;
+      }
+      .hljs-keyword,
+      .hljs-literal,
+      .hljs-symbol,
+      .hljs-name {
+        color: #569cd6;
+      }
+      .hljs-link {
+        color: #569cd6;
+        text-decoration: underline;
+      }
+      .hljs-built_in,
+      .hljs-type {
+        color: #4ec9b0;
+      }
+      .hljs-number,
+      .hljs-class {
+        color: #b8d7a3;
+      }
+      .hljs-string,
+      .hljs-meta-string {
+        color: #d69d85;
+      }
+      .hljs-regexp,
+      .hljs-template-tag {
+        color: #9a5334;
+      }
+      .hljs-subst,
+      .hljs-function,
+      .hljs-title,
+      .hljs-params,
+      .hljs-formula {
+        color: #dcdcdc;
+      }
+      .hljs-comment,
+      .hljs-quote {
+        color: #57a64a;
+        font-style: italic;
+      }
+      .hljs-doctag {
+        color: #608b4e;
+      }
+      .hljs-meta,
+      .hljs-meta-keyword,
+      .hljs-tag {
+        color: #9b9b9b;
+      }
+      .hljs-variable,
+      .hljs-template-variable {
+        color: #bd63c5;
+      }
+      .hljs-attr,
+      .hljs-attribute,
+      .hljs-builtin-name {
+        color: #9cdcfe;
+      }
+      .hljs-section {
+        color: gold;
+      }
+      .hljs-emphasis {
+        font-style: italic;
+      }
+      .hljs-strong {
+        font-weight: bold;
+      }
+      .hljs-bullet,
+      .hljs-selector-tag,
+      .hljs-selector-id,
+      .hljs-selector-class,
+      .hljs-selector-attr,
+      .hljs-selector-pseudo {
+        color: #d7ba7d;
+      }
+      .hljs-addition {
+        background-color: #144212;
+        display: inline-block;
+        width: 100%;
+      }
+      .hljs-deletion {
+        background-color: #600;
+        display: inline-block;
+        width: 100%;
+      }
+    </style>
+
+    <style>
+      /*
+* Markdown PDF CSS
+*/
+
+      body {
+        font-family: "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light",
+          "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+      }
+
+      pre {
+        background-color: #f8f8f8;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
+
+      pre:not(.hljs) {
+        padding: 23px;
+        line-height: 19px;
+      }
+
+      blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .emoji {
+        height: 1.4em;
+      }
+
+      /* for inline code */
+      :not(pre):not(.hljs) > code {
+        color: #c9ae75; /* Change the old color so it seems less like an error */
+        font-size: inherit;
+      }
+
+      /* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+      .page {
+        page-break-after: always;
+      }
+    </style>
+
+    <style>
+      .nav-container {
+        border: 2px solid white;
+        border-radius: 10px;
+        margin: 50px 0;
+        padding: 0 100px;
+      }
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px;
+        align-items: center;
+        font-weight: bold;
+      }
+      .navigation a {
+        color: red;
+        cursor: pointer;
+      }
+      .prev.no-link,
+      .next.no-link {
+        color: gray;
+        cursor: default;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="traversing-the-dom">Traversing the DOM</h1>
+    <p>
+      When you have an element node, you can select another element in relation
+      to it using these five properties (grouped in 3 categories in relation).
+      This is known as traversing t he DOM.
+    </p>
+    <ul>
+      <li><code>parentNode</code> to get the container element.</li>
+      <li>
+        <code>previousSibling</code>, <code>nextSibling</code> to get previous
+        or next element of according to the current element.
+      </li>
+      <li>
+        <code>firstChild</code>, <code>lastChild</code> to get the first or last
+        element inside the container of elements.
+      </li>
+    </ul>
+    <p><img src="./traversing.png" alt="traversing" /></p>
+    <h2 id="whitespace-nodes">WHITESPACE NODES</h2>
+    <p>
+      Traversing the DOM can be difficult because some browsers add a text node
+      whenever they come across whitespace between elements.
+    </p>
+    <p><img src="./white_space.png" alt="white_space" /></p>
+    <hr />
+    <p>Let us see the same example about HTML and CSS</p>
+    <p><strong>HTML</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"one"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hot"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>fresh<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> figs<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"two"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hot"</span>&gt;</span>pine nuts<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"three"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hot"</span>&gt;</span>honey<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"four"</span>&gt;</span>balsamic vinegar<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div></code></pre>
+    <p><strong>CSS</strong></p>
+    <pre
+      class="hljs"
+    ><code><div>@<span class="hljs-keyword">import</span> url(http://fonts.googleapis.com/css?family=Oswald);
+
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#000</span>;
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"Oswald"</span>, <span class="hljs-string">"Futura"</span>, sans-serif;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0px</span>;
+}
+
+<span class="hljs-selector-id">#page</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#403c3b</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0px</span> auto <span class="hljs-number">0px</span> auto;
+}
+<span class="hljs-comment">/* Responsive page rules at bottom of style sheet */</span>
+
+<span class="hljs-selector-tag">h1</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(../images/kinglogo.png);
+  <span class="hljs-attribute">background-repeat</span>: no-repeat;
+  <span class="hljs-attribute">background-position</span>: center center;
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">text-indent</span>: -<span class="hljs-number">1000%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">75px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">75px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">117px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0px</span> auto <span class="hljs-number">0px</span> auto;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">30px</span> <span class="hljs-number">10px</span> <span class="hljs-number">20px</span> <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-selector-tag">h2</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">font-weight</span>: normal;
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">text-transform</span>: uppercase;
+  <span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.2em</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-number">23px</span> <span class="hljs-number">0px</span>;
+}
+
+<span class="hljs-selector-tag">h2</span> <span class="hljs-selector-tag">span</span> {
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#000</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">top</span>: -<span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">18px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">4px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-number">4px</span>;
+}
+
+<span class="hljs-selector-tag">ul</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#584f4d</span>;
+  <span class="hljs-attribute">border</span>: none;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0px</span>;
+}
+
+<span class="hljs-selector-tag">li</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ec8b68</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#fe9772</span>;
+  <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#9f593f</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.05em</span>;
+  <span class="hljs-attribute">list-style-type</span>: none;
+  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">1px</span> <span class="hljs-number">#9f593f</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">1em</span>;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-selector-class">.hot</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#d7666b</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">1px</span> <span class="hljs-number">#914141</span>;
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#e99295</span>;
+  <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#914141</span>;
+}
+
+<span class="hljs-selector-class">.cool</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#6cc0ac</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">1px</span> <span class="hljs-number">#3b6a5e</span>;
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#7ee0c9</span>;
+  <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#3b6a5e</span>;
+}
+
+<span class="hljs-selector-class">.complete</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#999</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../images/icon-trash.png"</span>);
+  <span class="hljs-attribute">background-position</span>: center right;
+  <span class="hljs-attribute">background-repeat</span>: no-repeat;
+  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">1px</span> <span class="hljs-number">#ccc</span>;
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#666</span>;
+  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">1px</span> <span class="hljs-number">#333</span>;
+}
+
+<span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">text-decoration</span>: none;
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../images/icon-link.png"</span>);
+  <span class="hljs-attribute">background-position</span>: center right;
+  <span class="hljs-attribute">background-repeat</span>: no-repeat;
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">36px</span>;
+}
+
+<span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#403c3b</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span> auto <span class="hljs-number">20px</span> auto;
+  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">20%</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">80%</span>;
+}
+
+<span class="hljs-selector-id">#scriptResults</span> {
+  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-comment">/* Small screen - acts like the app would */</span>
+@<span class="hljs-keyword">media</span> only screen and (max-width: <span class="hljs-number">500px</span>) {
+  <span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#584f4d</span>;
+  }
+  <span class="hljs-selector-id">#page</span> {
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">480px</span>;
+  }
+}
+@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">501px</span>) and (max-width: <span class="hljs-number">767px</span>) {
+  <span class="hljs-selector-id">#page</span> {
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">480px</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span> auto <span class="hljs-number">20px</span> auto;
+  }
+}
+@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">768px</span>) and (max-width: <span class="hljs-number">959px</span>) {
+  <span class="hljs-selector-id">#page</span> {
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">480px</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span> auto <span class="hljs-number">20px</span> auto;
+  }
+}
+<span class="hljs-comment">/* Larger screens act like a demo for the app */</span>
+@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">960px</span>) {
+  <span class="hljs-selector-id">#page</span> {
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">480px</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span> auto <span class="hljs-number">20px</span> auto;
+  }
+}
+@<span class="hljs-keyword">media</span> (-webkit-min-device-pixel-ratio: <span class="hljs-number">2</span>), (min-resolution: <span class="hljs-number">192dpi</span>) {
+  <span class="hljs-selector-tag">h1</span> {
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(../images/2xkinglogo.png);
+    <span class="hljs-attribute">background-size</span>: <span class="hljs-number">72px</span> <span class="hljs-number">72px</span>;
+  }
+}
+</div></code></pre>
+    <p>
+      Let us see example found in
+      <strong
+        ><a href="../Examples/c05/node-list.html"
+          >Examples/c05/node-list.html</a
+        ></strong
+      >
+    </p>
+    <h2 id="apply-previous-next-sibling-script">
+      Apply previous &amp; next sibling script
+    </h2>
+    <p><strong>JavaScript</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-comment">// Select the starting point and find its siblings.</span>
+<span class="hljs-keyword">var</span> startItem = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"two"</span>);
+<span class="hljs-keyword">var</span> prevItem = startItem.previousSibling;
+<span class="hljs-keyword">var</span> nextItem = startItem.nextSibling;
+
+<span class="hljs-comment">// Change the values of the siblings' class attributes.</span>
+prevItem.className = <span class="hljs-string">"complete"</span>;
+nextItem.className = <span class="hljs-string">"cool"</span>;
+</div></code></pre>
+    <p><img src="./previous&amp;next.png" alt="previous&amp;next" /></p>
+    <h2 id="apply-first-last-child-script">
+      Apply first &amp; last child script
+    </h2>
+    <p><strong>JavaScript</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-comment">// Select the starting point and find its siblings.</span>
+<span class="hljs-keyword">var</span> startItem = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"two"</span>);
+<span class="hljs-keyword">var</span> prevItem = startItem.previousSibling;
+<span class="hljs-keyword">var</span> nextItem = startItem.nextSibling;
+
+<span class="hljs-comment">// Change the values of the siblings' class attributes.</span>
+prevItem.className = <span class="hljs-string">"complete"</span>;
+nextItem.className = <span class="hljs-string">"cool"</span>;
+</div></code></pre>
+    <p><img src="./first&amp;last.png" alt="first&amp;last" /></p>
+    <div class="nav-container">
+      <h3>Navigate to:</h3>
+      <div class="navigation">
+        <a
+          class="prev"
+          href="../030_Repeating_actions_for_an_entire_nodelist/Readme.html"
+        >
+          Previous
+        </a>
+        <a class="next" href="../032_get_update_element_content/Readme.html">
+          Next
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

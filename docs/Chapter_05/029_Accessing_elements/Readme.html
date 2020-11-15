@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Readme.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+    <style>
+      /*---------------------------------------------------------------------------------------------
+*  Copyright (c) Microsoft Corporation. All rights reserved.
+*  Licensed under the MIT License. See License.txt in the project root for license information.
+*--------------------------------------------------------------------------------------------*/
+
+      body {
+        font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light",
+          "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+        font-size: 14px;
+        padding: 0 12px;
+        line-height: 22px;
+        word-wrap: break-word;
+        background: #3d3d3d;
+        color: white;
+      }
+
+      #code-csp-warning {
+        position: fixed;
+        top: 0;
+        right: 0;
+        color: white;
+        margin: 16px;
+        text-align: center;
+        font-size: 12px;
+        font-family: sans-serif;
+        background-color: #444444;
+        cursor: pointer;
+        padding: 6px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+      }
+
+      #code-csp-warning:hover {
+        text-decoration: none;
+        background-color: #007acc;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+
+      body.scrollBeyondLastLine {
+        margin-bottom: calc(100vh - 22px);
+      }
+
+      body.showEditorSelection .code-line {
+        position: relative;
+      }
+
+      body.showEditorSelection .code-active-line:before,
+      body.showEditorSelection .code-line:hover:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -12px;
+        height: 100%;
+      }
+
+      body.showEditorSelection li.code-active-line:before,
+      body.showEditorSelection li.code-line:hover:before {
+        left: -30px;
+      }
+
+      .vscode-light.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.15);
+      }
+
+      .vscode-light.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 160, 0, 0.7);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 160, 0, 1);
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      a {
+        color: #4080d0;
+        text-decoration: none;
+      }
+
+      a:focus,
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 1px solid -webkit-focus-ring-color;
+        outline-offset: -1px;
+      }
+
+      hr {
+        border: 0;
+        height: 2px;
+        border-bottom: 2px solid;
+      }
+
+      h1 {
+        padding-bottom: 0.3em;
+        line-height: 1.2;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: normal;
+      }
+
+      h1 code,
+      h2 code,
+      h3 code,
+      h4 code,
+      h5 code,
+      h6 code {
+        font-size: inherit;
+        line-height: auto;
+      }
+
+      a:hover {
+        color: #4080d0;
+        text-decoration: underline;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      table > thead > tr > th {
+        text-align: left;
+        border-bottom: 1px solid;
+      }
+
+      table > thead > tr > th,
+      table > thead > tr > td,
+      table > tbody > tr > th,
+      table > tbody > tr > td {
+        padding: 5px 10px;
+      }
+
+      table > tbody > tr + tr > td {
+        border-top: 1px solid;
+      }
+
+      blockquote {
+        margin: 0 7px 0 5px;
+        padding: 0 16px 0 10px;
+        border-left: 5px solid;
+      }
+
+      code {
+        font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New",
+          monospace, "Droid Sans Fallback";
+        font-size: 14px;
+        line-height: 19px;
+      }
+
+      body.wordWrap pre {
+        white-space: pre-wrap;
+      }
+
+      .mac code {
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      pre:not(.hljs),
+      pre.hljs code > div {
+        padding: 16px;
+        border-radius: 3px;
+        overflow: auto;
+      }
+
+      /** Theming */
+
+      .vscode-light,
+      .vscode-light pre code {
+        color: rgb(30, 30, 30);
+      }
+
+      .vscode-dark,
+      .vscode-dark pre code {
+        color: #ddd;
+      }
+
+      .vscode-high-contrast,
+      .vscode-high-contrast pre code {
+        color: white;
+      }
+
+      .vscode-light code {
+        color: #a31515;
+      }
+
+      .vscode-dark code {
+        color: #d7ba7d;
+      }
+
+      .vscode-light pre:not(.hljs),
+      .vscode-light code > div {
+        background-color: rgba(220, 220, 220, 0.4);
+      }
+
+      .vscode-dark pre:not(.hljs),
+      .vscode-dark code > div {
+        background-color: rgba(10, 10, 10, 0.4);
+      }
+
+      .vscode-high-contrast pre:not(.hljs),
+      .vscode-high-contrast code > div {
+        background-color: rgb(0, 0, 0);
+      }
+
+      .vscode-high-contrast h1 {
+        border-color: rgb(0, 0, 0);
+      }
+
+      .vscode-light table > thead > tr > th {
+        border-color: rgba(0, 0, 0, 0.69);
+      }
+
+      .vscode-dark table > thead > tr > th {
+        border-color: rgba(255, 255, 255, 0.69);
+      }
+
+      .vscode-light h1,
+      .vscode-light hr,
+      .vscode-light table > tbody > tr + tr > td {
+        border-color: rgba(0, 0, 0, 0.18);
+      }
+
+      .vscode-dark h1,
+      .vscode-dark hr,
+      .vscode-dark table > tbody > tr + tr > td {
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .vscode-light blockquote,
+      .vscode-dark blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .vscode-high-contrast blockquote {
+        background: transparent;
+        border-color: #fff;
+      }
+    </style>
+
+    <style>
+      /* Tomorrow Theme */
+      /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+      /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        color: #4d4d4c;
+        padding: 0.5em;
+      }
+
+      .hljs-emphasis {
+        font-style: italic;
+      }
+
+      .hljs-strong {
+        font-weight: bold;
+      }
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        padding: 0.5em;
+        background: #1e1e1e;
+        color: #dcdcdc;
+      }
+      .hljs-keyword,
+      .hljs-literal,
+      .hljs-symbol,
+      .hljs-name {
+        color: #569cd6;
+      }
+      .hljs-link {
+        color: #569cd6;
+        text-decoration: underline;
+      }
+      .hljs-built_in,
+      .hljs-type {
+        color: #4ec9b0;
+      }
+      .hljs-number,
+      .hljs-class {
+        color: #b8d7a3;
+      }
+      .hljs-string,
+      .hljs-meta-string {
+        color: #d69d85;
+      }
+      .hljs-regexp,
+      .hljs-template-tag {
+        color: #9a5334;
+      }
+      .hljs-subst,
+      .hljs-function,
+      .hljs-title,
+      .hljs-params,
+      .hljs-formula {
+        color: #dcdcdc;
+      }
+      .hljs-comment,
+      .hljs-quote {
+        color: #57a64a;
+        font-style: italic;
+      }
+      .hljs-doctag {
+        color: #608b4e;
+      }
+      .hljs-meta,
+      .hljs-meta-keyword,
+      .hljs-tag {
+        color: #9b9b9b;
+      }
+      .hljs-variable,
+      .hljs-template-variable {
+        color: #bd63c5;
+      }
+      .hljs-attr,
+      .hljs-attribute,
+      .hljs-builtin-name {
+        color: #9cdcfe;
+      }
+      .hljs-section {
+        color: gold;
+      }
+      .hljs-emphasis {
+        font-style: italic;
+      }
+      .hljs-strong {
+        font-weight: bold;
+      }
+      .hljs-bullet,
+      .hljs-selector-tag,
+      .hljs-selector-id,
+      .hljs-selector-class,
+      .hljs-selector-attr,
+      .hljs-selector-pseudo {
+        color: #d7ba7d;
+      }
+      .hljs-addition {
+        background-color: #144212;
+        display: inline-block;
+        width: 100%;
+      }
+      .hljs-deletion {
+        background-color: #600;
+        display: inline-block;
+        width: 100%;
+      }
+    </style>
+
+    <style>
+      /*
+* Markdown PDF CSS
+*/
+
+      body {
+        font-family: "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light",
+          "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+      }
+
+      pre {
+        background-color: #f8f8f8;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
+
+      pre:not(.hljs) {
+        padding: 23px;
+        line-height: 19px;
+      }
+
+      blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .emoji {
+        height: 1.4em;
+      }
+
+      /* for inline code */
+      :not(pre):not(.hljs) > code {
+        color: #c9ae75; /* Change the old color so it seems less like an error */
+        font-size: inherit;
+      }
+
+      /* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+      .page {
+        page-break-after: always;
+      }
+    </style>
+
+    <style>
+      .nav-container {
+        border: 2px solid white;
+        border-radius: 10px;
+        margin: 50px 0;
+        padding: 0 100px;
+      }
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px;
+        align-items: center;
+        font-weight: bold;
+      }
+      .navigation a {
+        color: red;
+        cursor: pointer;
+      }
+      .prev.no-link,
+      .next.no-link {
+        color: gray;
+        cursor: default;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="accessing-elements">Accessing elements</h1>
+    <p>
+      DOM queries may return one element, or they may return a Node list, which
+      is a collection of nodes.
+    </p>
+    <h3 id="getelementbyidid">getElementById('id')</h3>
+    <p>
+      Selects an individual element given the value of its
+      <code>id attribute</code>. The HTML must have an id attribute in order for
+      it to be selectable.
+    </p>
+    <p>
+      <strong>First supported:</strong>
+      <code>IE5.5, Opera 7, all versions of Chrome, Firefox, Safari.</code>
+    </p>
+    <p><img src="./get_by_id.png" alt="get by id" /></p>
+    <h3 id="queryselectorcss-selector">querySelector('CSS SELECTOR')</h3>
+    <p>
+      Uses CSS selector syntax t hat would select one or more elements . This
+      method returns only the first of the matching elements.
+    </p>
+    <p>
+      <strong>First supported:</strong>
+      <code>IE8, Firefox 3.5, Safari 4 . Chrome 4, Opera 10</code>
+    </p>
+    <p><img src="./query_selector.png" alt="query selector" /></p>
+    <p>
+      <strong
+        ><em
+          >METHO DS THAT RETURN ONE OR MORE ELEMENTS (AS A NODE LIST):</em
+        ></strong
+      >
+    </p>
+    <h3 id="getelementsbyclassnameclass-name">
+      getElementsByClassName('CLASS NAME')
+    </h3>
+    <p>
+      Selects one or more elements given the value of their class attribute. he
+      HTML must have a class attribute for it to be selectable. This method is
+      faster than <code>querySelectorAll()</code>.
+    </p>
+    <p>
+      <strong><em>First supported:</em></strong>
+      <code
+        >IE9, Firefox 3, Safari 4 , Chrome 4 , Opera 10 (Several browsers had
+        partial I buggy support in earlier versions)</code
+      >
+    </p>
+    <p>
+      <img src="./getElementsByClassName.png" alt="getElementsByClassName" />
+    </p>
+    <h3 id="getelementsbytagnamehtml-tag-name">
+      getElementsByTagName('HTML TAG NAME')
+    </h3>
+    <p>
+      Selects all elements on the page with the specified tag name. This method
+      is faster than <code>querySelectorAll()</code>.
+    </p>
+    <p>
+      <strong><em>First supported:</em></strong>
+      <code
+        >IE6+, Firefox 3, Safari 4, Chrome, Opera 10 (Several browsers had
+        partial I buggy support in earlier versions)</code
+      >
+    </p>
+    <p><img src="./getElementsByTagName.png" alt="getElementsByTagName" /></p>
+    <h3 id="queryselectorallcss-selector">querySelectorAll('CSS SELECTOR')</h3>
+    <p>
+      Uses CSS selector syntax to select one or more element s and returns all
+      of those t hat match.
+    </p>
+    <p>
+      <strong><em>First supported:</em></strong>
+      <code>IE8, Firefox 3.5, Safa ri 4, Chrome 4, Opera 10</code>
+    </p>
+    <p><img src="./querySelectorAll.png" alt="querySelectorAll" /></p>
+    <h2 id="selecting-elements-using-id-attributes">
+      SELECTING ELEMENTS USING ID ATTRIBUTES
+    </h2>
+    <p>
+      Let us see the following example found in
+      <strong
+        ><a href="../Examples/c05/get-elements-by-id.html"
+          >Examples/c05/get-elements-by-id.html</a
+        ></strong
+      >
+    </p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"header"</span>&gt;</span>List King<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Buy groceries<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"one"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hot"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>fresh<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>figs
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"two"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hot"</span>&gt;</span>pine nuts<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"three"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hot"</span>&gt;</span>honey<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"four"</span>&gt;</span>balsamic vinegar<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div></code></pre>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-comment">// Select the element and store it in a variable.</span>
+<span class="hljs-keyword">var</span> el = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"one"</span>);
+<span class="hljs-comment">// Change the value of the class attribute.</span>
+el.className = <span class="hljs-string">"cool"</span>;
+</div></code></pre>
+    <h2 id="nodelists-dom-queries-that-return-more-than-one-element">
+      NODELISTS: DOM QUERIES THAT RETURN MORE THAN ONE ELEMENT
+    </h2>
+    <p>
+      When a DOM method can return more than one element, it returns a Nodelist
+      (even if it only finds one matching element).
+    </p>
+    <p>
+      <em
+        >&quot;Nodelists look like arrays and are numbered like arrays, but they
+        are not act actually arrays, they are a type of object called a
+        <code>collection</code>.&quot;</em
+      >
+    </p>
+    <ol>
+      <li>
+        <p>When a DOM query returns a Nodelist, you may want to:</p>
+        <ul>
+          <li>Select one element from the NodeList.</li>
+          <li>
+            Loop through each item in the Nodelist and perform the same
+            statements on each of the element nodes.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          Like any other object, a Nodelist has properties and methods, notably:
+        </p>
+        <ul>
+          <li>
+            The <code>length</code> property tells you how many it items are in
+            the Nodelist.
+          </li>
+          <li>
+            The <code>item()</code> method returns a specific node from the
+            Nodelist when you tell it the index number of the item t hat you
+            want (in the parentheses).
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <h2 id="selecting-an-element-from-nodelist">
+      Selecting an element from Nodelist
+    </h2>
+    <p>There are two ways to select element from NodeList:</p>
+    <ol>
+      <li>Using <code>item()</code> method</li>
+      <li>Array syntax.</li>
+    </ol>
+    <p>
+      <strong>Both</strong> require the <strong>index number</strong> of the
+      element you want.
+    </p>
+    <p>
+      <strong>Using item() method</strong>
+      <img src="./selecting_nodelist.png" alt="selecting_nodelist" />
+    </p>
+
+    <p><strong>Note that:</strong></p>
+    <ol>
+      <li>
+        Array syntax is preferred over the item() method because it is faster.
+      </li>
+      <li>
+        Before selecting a node from a NodeList, check that it containes nodes.
+      </li>
+      <li>
+        If you repeatedly use the NodeList, store them in a
+        <code>variable</code>.
+      </li>
+    </ol>
+    <p><strong>Using array syntax</strong></p>
+    <p>
+      <img
+        src="./selecting_nodelist_array_syntax.png"
+        alt="selecting_nodelist_array_syntax"
+      />
+    </p>
+    <hr />
+    <h2 id="examples">Examples</h2>
+    <p>Here we have HTML and CSS:</p>
+    <p><strong>HTML</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>JavaScript &amp;amp; jQuery - Chapter 5: Document Object Model - Get Elements By Class Name<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/c05.css"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"page"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"header"</span>&gt;</span>List<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Buy groceries<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"one"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hot"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>fresh<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> figs<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"two"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hot"</span>&gt;</span>pine nuts<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"three"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hot"</span>&gt;</span>honey<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"four"</span>&gt;</span>balsamic vinegar<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/get-elements-by-class-name.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+    <p><strong>CSS</strong></p>
+    <pre
+      class="hljs"
+    ><code><div>@<span class="hljs-keyword">import</span> url(http://fonts.googleapis.com/css?family=Oswald);
+
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#000</span>;
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"Oswald"</span>, <span class="hljs-string">"Futura"</span>, sans-serif;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0px</span>;
+}
+
+<span class="hljs-selector-id">#page</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#403c3b</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0px</span> auto <span class="hljs-number">0px</span> auto;
+}
+<span class="hljs-comment">/* Responsive page rules at bottom of style sheet */</span>
+
+<span class="hljs-selector-tag">h1</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(../images/kinglogo.png);
+  <span class="hljs-attribute">background-repeat</span>: no-repeat;
+  <span class="hljs-attribute">background-position</span>: center center;
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">text-indent</span>: -<span class="hljs-number">1000%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">75px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">75px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">117px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0px</span> auto <span class="hljs-number">0px</span> auto;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">30px</span> <span class="hljs-number">10px</span> <span class="hljs-number">20px</span> <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-selector-tag">h2</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">font-weight</span>: normal;
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">text-transform</span>: uppercase;
+  <span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.2em</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-number">23px</span> <span class="hljs-number">0px</span>;
+}
+
+<span class="hljs-selector-tag">h2</span> <span class="hljs-selector-tag">span</span> {
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#000</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">top</span>: -<span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">18px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">4px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-number">4px</span>;
+}
+
+<span class="hljs-selector-tag">ul</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#584f4d</span>;
+  <span class="hljs-attribute">border</span>: none;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0px</span>;
+}
+
+<span class="hljs-selector-tag">li</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ec8b68</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#fe9772</span>;
+  <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#9f593f</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.05em</span>;
+  <span class="hljs-attribute">list-style-type</span>: none;
+  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">1px</span> <span class="hljs-number">#9f593f</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">1em</span>;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-selector-class">.hot</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#d7666b</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">1px</span> <span class="hljs-number">#914141</span>;
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#e99295</span>;
+  <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#914141</span>;
+}
+
+<span class="hljs-selector-class">.cool</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#6cc0ac</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">1px</span> <span class="hljs-number">#3b6a5e</span>;
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#7ee0c9</span>;
+  <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#3b6a5e</span>;
+}
+
+<span class="hljs-selector-class">.complete</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#999</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../images/icon-trash.png"</span>);
+  <span class="hljs-attribute">background-position</span>: center right;
+  <span class="hljs-attribute">background-repeat</span>: no-repeat;
+  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">1px</span> <span class="hljs-number">#ccc</span>;
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#666</span>;
+  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">1px</span> <span class="hljs-number">#333</span>;
+}
+
+<span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">text-decoration</span>: none;
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../images/icon-link.png"</span>);
+  <span class="hljs-attribute">background-position</span>: center right;
+  <span class="hljs-attribute">background-repeat</span>: no-repeat;
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">36px</span>;
+}
+
+<span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#403c3b</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span> auto <span class="hljs-number">20px</span> auto;
+  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">20%</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">80%</span>;
+}
+
+<span class="hljs-selector-id">#scriptResults</span> {
+  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-comment">/* Small screen - acts like the app would */</span>
+@<span class="hljs-keyword">media</span> only screen and (max-width: <span class="hljs-number">500px</span>) {
+  <span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#584f4d</span>;
+  }
+  <span class="hljs-selector-id">#page</span> {
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">480px</span>;
+  }
+}
+@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">501px</span>) and (max-width: <span class="hljs-number">767px</span>) {
+  <span class="hljs-selector-id">#page</span> {
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">480px</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span> auto <span class="hljs-number">20px</span> auto;
+  }
+}
+@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">768px</span>) and (max-width: <span class="hljs-number">959px</span>) {
+  <span class="hljs-selector-id">#page</span> {
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">480px</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span> auto <span class="hljs-number">20px</span> auto;
+  }
+}
+<span class="hljs-comment">/* Larger screens act like a demo for the app */</span>
+@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">960px</span>) {
+  <span class="hljs-selector-id">#page</span> {
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">480px</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span> auto <span class="hljs-number">20px</span> auto;
+  }
+}
+@<span class="hljs-keyword">media</span> (-webkit-min-device-pixel-ratio: <span class="hljs-number">2</span>), (min-resolution: <span class="hljs-number">192dpi</span>) {
+  <span class="hljs-selector-tag">h1</span> {
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(../images/2xkinglogo.png);
+    <span class="hljs-attribute">background-size</span>: <span class="hljs-number">72px</span> <span class="hljs-number">72px</span>;
+  }
+}
+</div></code></pre>
+    <h4 id="selecting-elements-using-class-attributes">
+      Selecting elements using Class Attributes:
+    </h4>
+    <p>
+      JavaScript found for this example found in
+      <strong
+        ><a href="../Examples/c05/get-elements-by-class-name.html"
+          >Examples/c05/get-elements-by-class-name.html</a
+        ></strong
+      >
+    </p>
+    <p><strong>JavaScript</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-keyword">var</span> elements = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"hot"</span>); <span class="hljs-comment">// Find hot items</span>
+
+<span class="hljs-keyword">if</span> (elements.length &gt; <span class="hljs-number">2</span>) {
+  <span class="hljs-comment">// If 3 or more are found</span>
+
+  <span class="hljs-keyword">var</span> el = elements[<span class="hljs-number">2</span>]; <span class="hljs-comment">// Select the third one from the NodeList</span>
+  el.className = <span class="hljs-string">"cool"</span>; <span class="hljs-comment">// Change the value of its class attribute</span>
+}
+</div></code></pre>
+    <h4 id="selecting-elements-by-tag-name">Selecting elements By Tag Name:</h4>
+    <p>
+      JavaScript found for this example found in
+      <strong
+        ><a href="../Examples/c05/get-elements-by-tag-name.html"
+          >Examples/c05/get-elements-by-tag-name.html</a
+        ></strong
+      >
+    </p>
+    <p><strong>JavaScript</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-keyword">var</span> elements = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"li"</span>); <span class="hljs-comment">// Find &lt;li&gt; elements</span>
+
+<span class="hljs-keyword">if</span> (elements.length &gt; <span class="hljs-number">0</span>) {
+  <span class="hljs-comment">// If 1 or more are found</span>
+
+  <span class="hljs-keyword">var</span> el = elements[<span class="hljs-number">0</span>]; <span class="hljs-comment">// Select the first one using array syntax</span>
+  el.className = <span class="hljs-string">"cool"</span>; <span class="hljs-comment">// Change the value of the class attribute</span>
+}
+</div></code></pre>
+    <h4 id="selecting-elements-using-css-selectors">
+      Selecting elements using CSS Selectors:
+    </h4>
+    <p>
+      JavaScript found for this example found in
+      <strong
+        ><a href="../Examples/c05/query-selector.html"
+          >Examples/c05/query-selector.html</a
+        ></strong
+      >
+    </p>
+    <p><strong>JavaScript</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-comment">// querySelector only returns the first match.</span>
+<span class="hljs-keyword">var</span> el = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"li.hot"</span>);
+el.className = <span class="hljs-string">"cool"</span>;
+
+<span class="hljs-comment">// querySelectorAll returns a NodeList.</span>
+<span class="hljs-comment">// The third li element is then selected and changed.</span>
+<span class="hljs-keyword">var</span> els = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">"li.hot"</span>);
+els[<span class="hljs-number">1</span>].className = <span class="hljs-string">"cool"</span>;
+</div></code></pre>
+    <div class="nav-container">
+      <h3>Navigate to:</h3>
+      <div class="navigation">
+        <a class="prev" href="../028_DOM_Tree_web_page_model/Readme.html">
+          Previous
+        </a>
+        <a
+          class="next"
+          href="../030_Repeating_actions_for_an_entire_nodelist/Readme.html"
+        >
+          Next
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

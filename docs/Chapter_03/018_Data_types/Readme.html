@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Readme.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+    <style>
+      /*---------------------------------------------------------------------------------------------
+	 *  Copyright (c) Microsoft Corporation. All rights reserved.
+	 *  Licensed under the MIT License. See License.txt in the project root for license information.
+	 *--------------------------------------------------------------------------------------------*/
+
+      body {
+        font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light",
+          "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+        font-size: 14px;
+        padding: 0 12px;
+        line-height: 22px;
+        word-wrap: break-word;
+        background: #3d3d3d;
+        color: white;
+      }
+
+      #code-csp-warning {
+        position: fixed;
+        top: 0;
+        right: 0;
+        color: white;
+        margin: 16px;
+        text-align: center;
+        font-size: 12px;
+        font-family: sans-serif;
+        background-color: #444444;
+        cursor: pointer;
+        padding: 6px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+      }
+
+      #code-csp-warning:hover {
+        text-decoration: none;
+        background-color: #007acc;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+
+      body.scrollBeyondLastLine {
+        margin-bottom: calc(100vh - 22px);
+      }
+
+      body.showEditorSelection .code-line {
+        position: relative;
+      }
+
+      body.showEditorSelection .code-active-line:before,
+      body.showEditorSelection .code-line:hover:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -12px;
+        height: 100%;
+      }
+
+      body.showEditorSelection li.code-active-line:before,
+      body.showEditorSelection li.code-line:hover:before {
+        left: -30px;
+      }
+
+      .vscode-light.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.15);
+      }
+
+      .vscode-light.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 160, 0, 0.7);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 160, 0, 1);
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      a {
+        color: #4080d0;
+        text-decoration: none;
+      }
+
+      a:focus,
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 1px solid -webkit-focus-ring-color;
+        outline-offset: -1px;
+      }
+
+      hr {
+        border: 0;
+        height: 2px;
+        border-bottom: 2px solid;
+      }
+
+      h1 {
+        padding-bottom: 0.3em;
+        line-height: 1.2;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: normal;
+      }
+
+      h1 code,
+      h2 code,
+      h3 code,
+      h4 code,
+      h5 code,
+      h6 code {
+        font-size: inherit;
+        line-height: auto;
+      }
+
+      a:hover {
+        color: #4080d0;
+        text-decoration: underline;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      table > thead > tr > th {
+        text-align: left;
+        border-bottom: 1px solid;
+      }
+
+      table > thead > tr > th,
+      table > thead > tr > td,
+      table > tbody > tr > th,
+      table > tbody > tr > td {
+        padding: 5px 10px;
+      }
+
+      table > tbody > tr + tr > td {
+        border-top: 1px solid;
+      }
+
+      blockquote {
+        margin: 0 7px 0 5px;
+        padding: 0 16px 0 10px;
+        border-left: 5px solid;
+      }
+
+      code {
+        font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New",
+          monospace, "Droid Sans Fallback";
+        font-size: 14px;
+        line-height: 19px;
+      }
+
+      body.wordWrap pre {
+        white-space: pre-wrap;
+      }
+
+      .mac code {
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      pre:not(.hljs),
+      pre.hljs code > div {
+        padding: 16px;
+        border-radius: 3px;
+        overflow: auto;
+      }
+
+      /** Theming */
+
+      .vscode-light,
+      .vscode-light pre code {
+        color: rgb(30, 30, 30);
+      }
+
+      .vscode-dark,
+      .vscode-dark pre code {
+        color: #ddd;
+      }
+
+      .vscode-high-contrast,
+      .vscode-high-contrast pre code {
+        color: white;
+      }
+
+      .vscode-light code {
+        color: #a31515;
+      }
+
+      .vscode-dark code {
+        color: #d7ba7d;
+      }
+
+      .vscode-light pre:not(.hljs),
+      .vscode-light code > div {
+        background-color: rgba(220, 220, 220, 0.4);
+      }
+
+      .vscode-dark pre:not(.hljs),
+      .vscode-dark code > div {
+        background-color: rgba(10, 10, 10, 0.4);
+      }
+
+      .vscode-high-contrast pre:not(.hljs),
+      .vscode-high-contrast code > div {
+        background-color: rgb(0, 0, 0);
+      }
+
+      .vscode-high-contrast h1 {
+        border-color: rgb(0, 0, 0);
+      }
+
+      .vscode-light table > thead > tr > th {
+        border-color: rgba(0, 0, 0, 0.69);
+      }
+
+      .vscode-dark table > thead > tr > th {
+        border-color: rgba(255, 255, 255, 0.69);
+      }
+
+      .vscode-light h1,
+      .vscode-light hr,
+      .vscode-light table > tbody > tr + tr > td {
+        border-color: rgba(0, 0, 0, 0.18);
+      }
+
+      .vscode-dark h1,
+      .vscode-dark hr,
+      .vscode-dark table > tbody > tr + tr > td {
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .vscode-light blockquote,
+      .vscode-dark blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .vscode-high-contrast blockquote {
+        background: transparent;
+        border-color: #fff;
+      }
+    </style>
+
+    <style>
+      /* Tomorrow Theme */
+      /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+      /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        color: #4d4d4c;
+        padding: 0.5em;
+      }
+
+      .hljs-emphasis {
+        font-style: italic;
+      }
+
+      .hljs-strong {
+        font-weight: bold;
+      }
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        padding: 0.5em;
+        background: #1e1e1e;
+        color: #dcdcdc;
+      }
+      .hljs-keyword,
+      .hljs-literal,
+      .hljs-symbol,
+      .hljs-name {
+        color: #569cd6;
+      }
+      .hljs-link {
+        color: #569cd6;
+        text-decoration: underline;
+      }
+      .hljs-built_in,
+      .hljs-type {
+        color: #4ec9b0;
+      }
+      .hljs-number,
+      .hljs-class {
+        color: #b8d7a3;
+      }
+      .hljs-string,
+      .hljs-meta-string {
+        color: #d69d85;
+      }
+      .hljs-regexp,
+      .hljs-template-tag {
+        color: #9a5334;
+      }
+      .hljs-subst,
+      .hljs-function,
+      .hljs-title,
+      .hljs-params,
+      .hljs-formula {
+        color: #dcdcdc;
+      }
+      .hljs-comment,
+      .hljs-quote {
+        color: #57a64a;
+        font-style: italic;
+      }
+      .hljs-doctag {
+        color: #608b4e;
+      }
+      .hljs-meta,
+      .hljs-meta-keyword,
+      .hljs-tag {
+        color: #9b9b9b;
+      }
+      .hljs-variable,
+      .hljs-template-variable {
+        color: #bd63c5;
+      }
+      .hljs-attr,
+      .hljs-attribute,
+      .hljs-builtin-name {
+        color: #9cdcfe;
+      }
+      .hljs-section {
+        color: gold;
+      }
+      .hljs-emphasis {
+        font-style: italic;
+      }
+      .hljs-strong {
+        font-weight: bold;
+      }
+      .hljs-bullet,
+      .hljs-selector-tag,
+      .hljs-selector-id,
+      .hljs-selector-class,
+      .hljs-selector-attr,
+      .hljs-selector-pseudo {
+        color: #d7ba7d;
+      }
+      .hljs-addition {
+        background-color: #144212;
+        display: inline-block;
+        width: 100%;
+      }
+      .hljs-deletion {
+        background-color: #600;
+        display: inline-block;
+        width: 100%;
+      }
+    </style>
+
+    <style>
+      /*
+	 * Markdown PDF CSS
+	 */
+
+      body {
+        font-family: "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light",
+          "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+      }
+
+      pre {
+        background-color: #f8f8f8;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
+
+      pre:not(.hljs) {
+        padding: 23px;
+        line-height: 19px;
+      }
+
+      blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .emoji {
+        height: 1.4em;
+      }
+
+      /* for inline code */
+      :not(pre):not(.hljs) > code {
+        color: #c9ae75; /* Change the old color so it seems less like an error */
+        font-size: inherit;
+      }
+
+      /* Page Break : use <div class="page"/> to insert page break
+	-------------------------------------------------------- */
+      .page {
+        page-break-after: always;
+      }
+    </style>
+
+    <style>
+      .nav-container {
+        border: 2px solid white;
+        border-radius: 10px;
+        margin: 50px 0;
+        padding: 0 100px;
+      }
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px;
+        align-items: center;
+        font-weight: bold;
+      }
+      .navigation a {
+        color: red;
+        cursor: pointer;
+      }
+      .prev.no-link,.next.no-link {
+        color: gray;
+        cursor: default;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="data-types">Data types</h1>
+    <p>In JavaScript there are six data types:</p>
+    <ul>
+      <li>Five of them are described as <code>primitive</code> data types.</li>
+      <li>
+        The sixth is the object (and is referred to as a complex data type).
+      </li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Value type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>String</td>
+          <td>&quot;JavaScript is awesome!!&quot;</td>
+        </tr>
+        <tr>
+          <td>Number</td>
+          <td>1,2,2.5,...</td>
+        </tr>
+        <tr>
+          <td>Boolean</td>
+          <td>true, false</td>
+        </tr>
+        <tr>
+          <td>Undefined</td>
+          <td>Undefined</td>
+        </tr>
+        <tr>
+          <td>Null</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <td>Object</td>
+          <td>{}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Whenever you have a value that is a string, you can use the properties and
+      methods of the String object on that valu e. This example stores the
+      phrase &quot;Home sweet home &quot; in a variable.
+    </p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-keyword">let</span> saying = <span class="hljs-string">"Home sweet home "</span>;
+</div></code></pre>
+    <p>
+      When you declare a variable in JavaScript, It will be wrapped under the
+      hood with objects according to the type of the variable. In our example we
+      define a string and for that javaScript wrap the variable with special
+      methods that we can use. The properties &amp; methods are:
+    </p>
+    <p><strong>Properties</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>length</code></td>
+          <td>
+            Returns number of characters in the string in most cases (see note
+            bottom-left)
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <p><strong>Methods</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>toUpperCase()</code></td>
+          <td>Changes string to uppercase characters</td>
+        </tr>
+        <tr>
+          <td><code>toLowerCase()</code></td>
+          <td>Changes string to lowercase characters</td>
+        </tr>
+        <tr>
+          <td><code>charAt()</code></td>
+          <td>
+            Takes an index number as a parameter, and returns the character
+            found at that position
+          </td>
+        </tr>
+        <tr>
+          <td><code>indexOf()</code></td>
+          <td>
+            Returns index number of the first time a character or set of
+            characters is found within the string
+          </td>
+        </tr>
+        <tr>
+          <td><code>lastIndexOf()</code></td>
+          <td>
+            Returns index number of the last time a character or set of
+            characters is found within the string
+          </td>
+        </tr>
+        <tr>
+          <td><code>substring()</code></td>
+          <td>
+            Returns characters found between two index numbers where the
+            character for the first index number is included and the character
+            for the last index number is not included
+          </td>
+        </tr>
+        <tr>
+          <td><code>split()</code></td>
+          <td>
+            When a character is specified, it splits the string each time it is
+            found, then stores each individual part in an array
+          </td>
+        </tr>
+        <tr>
+          <td><code>trim()</code></td>
+          <td>Removes whitespace from start and end of string</td>
+        </tr>
+        <tr>
+          <td><code>replace()</code></td>
+          <td>
+            Like find and replace, it takes one value that should be found, and
+            another to replace it (by default, it only replaces the first match
+            it finds)
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Each character in a string is automatically given a number, called an
+      <code>index</code> number. Index numbers always start at
+      <strong>zero</strong> and not one (just like for items in an array).
+    </p>
+    <p><img src="./stringexample.png" alt="String methods" />`</p>
+    <h3 id="references-and-terms">References and Terms:</h3>
+    <blockquote>
+      <p>
+        <img
+          class="emoji"
+          alt="gem"
+          src="data:image/png;base64,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"
+        />
+        Read more about
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures"
+          >Data type structure in JavaScript</a
+        >
+      </p>
+    </blockquote>
+    <div class="nav-container">
+      <h3>Navigate to:</h3>
+      <div class="navigation">
+        <a class="prev" href="../017_String_global_object/Readme.html">
+          Previous
+        </a>
+        <a class="next" href="../019_Number_global_object/Readme.html">
+          Next
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

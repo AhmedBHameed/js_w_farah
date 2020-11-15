@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Readme.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+    <style>
+      /*---------------------------------------------------------------------------------------------
+	 *  Copyright (c) Microsoft Corporation. All rights reserved.
+	 *  Licensed under the MIT License. See License.txt in the project root for license information.
+	 *--------------------------------------------------------------------------------------------*/
+
+      body {
+        font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light",
+          "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+        font-size: 14px;
+        padding: 0 12px;
+        line-height: 22px;
+        word-wrap: break-word;
+        background: #3d3d3d;
+        color: white;
+      }
+
+      #code-csp-warning {
+        position: fixed;
+        top: 0;
+        right: 0;
+        color: white;
+        margin: 16px;
+        text-align: center;
+        font-size: 12px;
+        font-family: sans-serif;
+        background-color: #444444;
+        cursor: pointer;
+        padding: 6px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+      }
+
+      #code-csp-warning:hover {
+        text-decoration: none;
+        background-color: #007acc;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+
+      body.scrollBeyondLastLine {
+        margin-bottom: calc(100vh - 22px);
+      }
+
+      body.showEditorSelection .code-line {
+        position: relative;
+      }
+
+      body.showEditorSelection .code-active-line:before,
+      body.showEditorSelection .code-line:hover:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -12px;
+        height: 100%;
+      }
+
+      body.showEditorSelection li.code-active-line:before,
+      body.showEditorSelection li.code-line:hover:before {
+        left: -30px;
+      }
+
+      .vscode-light.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.15);
+      }
+
+      .vscode-light.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 160, 0, 0.7);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 160, 0, 1);
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      a {
+        color: #4080d0;
+        text-decoration: none;
+      }
+
+      a:focus,
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 1px solid -webkit-focus-ring-color;
+        outline-offset: -1px;
+      }
+
+      hr {
+        border: 0;
+        height: 2px;
+        border-bottom: 2px solid;
+      }
+
+      h1 {
+        padding-bottom: 0.3em;
+        line-height: 1.2;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: normal;
+      }
+
+      h1 code,
+      h2 code,
+      h3 code,
+      h4 code,
+      h5 code,
+      h6 code {
+        font-size: inherit;
+        line-height: auto;
+      }
+
+      a:hover {
+        color: #4080d0;
+        text-decoration: underline;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      table > thead > tr > th {
+        text-align: left;
+        border-bottom: 1px solid;
+      }
+
+      table > thead > tr > th,
+      table > thead > tr > td,
+      table > tbody > tr > th,
+      table > tbody > tr > td {
+        padding: 5px 10px;
+      }
+
+      table > tbody > tr + tr > td {
+        border-top: 1px solid;
+      }
+
+      blockquote {
+        margin: 0 7px 0 5px;
+        padding: 0 16px 0 10px;
+        border-left: 5px solid;
+      }
+
+      code {
+        font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New",
+          monospace, "Droid Sans Fallback";
+        font-size: 14px;
+        line-height: 19px;
+      }
+
+      body.wordWrap pre {
+        white-space: pre-wrap;
+      }
+
+      .mac code {
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      pre:not(.hljs),
+      pre.hljs code > div {
+        padding: 16px;
+        border-radius: 3px;
+        overflow: auto;
+      }
+
+      /** Theming */
+
+      .vscode-light,
+      .vscode-light pre code {
+        color: rgb(30, 30, 30);
+      }
+
+      .vscode-dark,
+      .vscode-dark pre code {
+        color: #ddd;
+      }
+
+      .vscode-high-contrast,
+      .vscode-high-contrast pre code {
+        color: white;
+      }
+
+      .vscode-light code {
+        color: #a31515;
+      }
+
+      .vscode-dark code {
+        color: #d7ba7d;
+      }
+
+      .vscode-light pre:not(.hljs),
+      .vscode-light code > div {
+        background-color: rgba(220, 220, 220, 0.4);
+      }
+
+      .vscode-dark pre:not(.hljs),
+      .vscode-dark code > div {
+        background-color: rgba(10, 10, 10, 0.4);
+      }
+
+      .vscode-high-contrast pre:not(.hljs),
+      .vscode-high-contrast code > div {
+        background-color: rgb(0, 0, 0);
+      }
+
+      .vscode-high-contrast h1 {
+        border-color: rgb(0, 0, 0);
+      }
+
+      .vscode-light table > thead > tr > th {
+        border-color: rgba(0, 0, 0, 0.69);
+      }
+
+      .vscode-dark table > thead > tr > th {
+        border-color: rgba(255, 255, 255, 0.69);
+      }
+
+      .vscode-light h1,
+      .vscode-light hr,
+      .vscode-light table > tbody > tr + tr > td {
+        border-color: rgba(0, 0, 0, 0.18);
+      }
+
+      .vscode-dark h1,
+      .vscode-dark hr,
+      .vscode-dark table > tbody > tr + tr > td {
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .vscode-light blockquote,
+      .vscode-dark blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .vscode-high-contrast blockquote {
+        background: transparent;
+        border-color: #fff;
+      }
+    </style>
+
+    <style>
+      /* Tomorrow Theme */
+      /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+      /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        color: #4d4d4c;
+        padding: 0.5em;
+      }
+
+      .hljs-emphasis {
+        font-style: italic;
+      }
+
+      .hljs-strong {
+        font-weight: bold;
+      }
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        padding: 0.5em;
+        background: #1e1e1e;
+        color: #dcdcdc;
+      }
+      .hljs-keyword,
+      .hljs-literal,
+      .hljs-symbol,
+      .hljs-name {
+        color: #569cd6;
+      }
+      .hljs-link {
+        color: #569cd6;
+        text-decoration: underline;
+      }
+      .hljs-built_in,
+      .hljs-type {
+        color: #4ec9b0;
+      }
+      .hljs-number,
+      .hljs-class {
+        color: #b8d7a3;
+      }
+      .hljs-string,
+      .hljs-meta-string {
+        color: #d69d85;
+      }
+      .hljs-regexp,
+      .hljs-template-tag {
+        color: #9a5334;
+      }
+      .hljs-subst,
+      .hljs-function,
+      .hljs-title,
+      .hljs-params,
+      .hljs-formula {
+        color: #dcdcdc;
+      }
+      .hljs-comment,
+      .hljs-quote {
+        color: #57a64a;
+        font-style: italic;
+      }
+      .hljs-doctag {
+        color: #608b4e;
+      }
+      .hljs-meta,
+      .hljs-meta-keyword,
+      .hljs-tag {
+        color: #9b9b9b;
+      }
+      .hljs-variable,
+      .hljs-template-variable {
+        color: #bd63c5;
+      }
+      .hljs-attr,
+      .hljs-attribute,
+      .hljs-builtin-name {
+        color: #9cdcfe;
+      }
+      .hljs-section {
+        color: gold;
+      }
+      .hljs-emphasis {
+        font-style: italic;
+      }
+      .hljs-strong {
+        font-weight: bold;
+      }
+      .hljs-bullet,
+      .hljs-selector-tag,
+      .hljs-selector-id,
+      .hljs-selector-class,
+      .hljs-selector-attr,
+      .hljs-selector-pseudo {
+        color: #d7ba7d;
+      }
+      .hljs-addition {
+        background-color: #144212;
+        display: inline-block;
+        width: 100%;
+      }
+      .hljs-deletion {
+        background-color: #600;
+        display: inline-block;
+        width: 100%;
+      }
+    </style>
+
+    <style>
+      /*
+	 * Markdown PDF CSS
+	 */
+
+      body {
+        font-family: "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light",
+          "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+      }
+
+      pre {
+        background-color: #f8f8f8;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
+
+      pre:not(.hljs) {
+        padding: 23px;
+        line-height: 19px;
+      }
+
+      blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .emoji {
+        height: 1.4em;
+      }
+
+      /* for inline code */
+      :not(pre):not(.hljs) > code {
+        color: #c9ae75; /* Change the old color so it seems less like an error */
+        font-size: inherit;
+      }
+
+      /* Page Break : use <div class="page"/> to insert page break
+	-------------------------------------------------------- */
+      .page {
+        page-break-after: always;
+      }
+    </style>
+
+    <style>
+      .nav-container {
+        border: 2px solid white;
+        border-radius: 10px;
+        margin: 50px 0;
+        padding: 0 100px;
+      }
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px;
+        align-items: center;
+        font-weight: bold;
+      }
+      .navigation a {
+        color: red;
+        cursor: pointer;
+      }
+      .prev.no-link,
+      .next.no-link {
+        color: gray;
+        cursor: default;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="loops">LOOPS</h1>
+    <p>
+      Loops check a condition. If it returns <code>true</code>, a code block
+      will run. Then the condition will be checked again and if it still returns
+      <code>true</code>, the code block will run again. It repeats until the
+      condition returns <code>false</code>. There are three common types of
+      loop:
+    </p>
+    <ul>
+      <li>
+        For (The most common loop)
+        <ul>
+          <li>If you need to run code a specific number if times.</li>
+          <li>
+            The condition is usually a counter which is used to tell how many
+            times the loop should run.
+          </li>
+        </ul>
+      </li>
+      <li>
+        While
+        <ul>
+          <li>
+            If you do not know how many tiles the code should run, you can use
+            <code>while</code> loop.
+          </li>
+          <li>
+            Here the condition can be something other than a counter, and the
+            code will continue to loop for as long as the condition is
+            <code>true</code>.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Do ... While
+        <ul>
+          <li>
+            Similar to <code>while</code> loop but always run the code inside
+            the curly braces at least once, even if the condition evaluated to
+            <code>false</code>.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="for-loop">FOR LOOP</h2>
+    <p>
+      <img src="./for.png" alt="for loop" />
+      <img src="./for_counter_condition.png" alt="for counter" />
+    </p>
+
+    <h2 id="key-of-loop-concepts">KEY OF LOOP CONCEPTS</h2>
+    <ol>
+      <li>
+        In some cases you can find <code>break</code> or <code>continue</code>.
+        They are used to control the follow of the loop.
+      </li>
+      <li>
+        If you don't control your loop condition correctly the loop get into
+        <code>infinite loop</code>.
+      </li>
+    </ol>
+    <p>
+      example found in
+      <strong
+        ><a href="../Examples/c04/for-loop.html"
+          >Examples/c04/for-loop.html</a
+        ></strong
+      >
+    </p>
+    <p><strong>HTML</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>
+      JavaScript &amp;amp; jQuery - Chapter 4: Decisions &amp;amp; Loops - For Loop
+    <span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/c04.css"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"page1"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Bullseye<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"images/teacher.png"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"teacher"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"teacher"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"answer"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/for-loop.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+    <p><strong>JavaScript</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-keyword">var</span> scores = [<span class="hljs-number">24</span>, <span class="hljs-number">32</span>, <span class="hljs-number">17</span>]; <span class="hljs-comment">// Array of scores</span>
+<span class="hljs-keyword">var</span> arrayLength = scores.length; <span class="hljs-comment">// Items in array</span>
+<span class="hljs-keyword">var</span> roundNumber = <span class="hljs-number">0</span>; <span class="hljs-comment">// Current round</span>
+<span class="hljs-keyword">var</span> msg = <span class="hljs-string">""</span>; <span class="hljs-comment">// Message</span>
+
+<span class="hljs-comment">// Loop through the items in the array</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arrayLength; i++) {
+  <span class="hljs-comment">// Arrays are zero based (so 0 is round 1)</span>
+  <span class="hljs-comment">// Add 1 to the current round</span>
+  roundNumber = i + <span class="hljs-number">1</span>;
+
+  <span class="hljs-comment">// Write the current round to message</span>
+  msg += <span class="hljs-string">"Round "</span> + roundNumber + <span class="hljs-string">": "</span>;
+
+  <span class="hljs-comment">// Get the score from the scores array</span>
+  msg += scores[i] + <span class="hljs-string">"&lt;br /&gt;"</span>;
+}
+
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"answer"</span>).innerHTML = msg;
+</div></code></pre>
+    <p>
+      example found in
+      <strong
+        ><a href="../Examples/c04/while-loop.html"
+          >Examples/c04/while-loop.html</a
+        ></strong
+      >
+    </p>
+    <p><strong>HTML</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>
+      JavaScript &amp;amp; jQuery - Chapter 4: Decisions &amp;amp; Loops - While Loop
+    <span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/c04.css"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"page1"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Bullseye<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"images/teacher.png"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"teacher"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"teacher"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"answer"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/while-loop.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+    <p><strong>JavaScript</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; <span class="hljs-comment">// Set counter to 1</span>
+<span class="hljs-keyword">var</span> msg = <span class="hljs-string">""</span>; <span class="hljs-comment">// Message</span>
+
+<span class="hljs-comment">// Store 5 times table in a variable</span>
+<span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">10</span>) {
+  msg += i + <span class="hljs-string">" x 5 = "</span> + i * <span class="hljs-number">5</span> + <span class="hljs-string">"&lt;br /&gt;"</span>;
+  i++;
+}
+
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"answer"</span>).innerHTML = msg;
+</div></code></pre>
+    <p>
+      example found in
+      <strong
+        ><a href="../Examples/c04/do-while-loop.html"
+          >Examples/c04/do-while-loop.html</a
+        ></strong
+      >
+    </p>
+    <p><strong>HTML</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>
+      JavaScript &amp;amp; jQuery - Chapter 4: Decisions &amp;amp; Loops - Do While Loop
+    <span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/c04.css"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"page1"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Bullseye<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"images/teacher.png"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"teacher"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"teacher"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"answer"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/do-while-loop.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+    <p><strong>JavaScript</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; <span class="hljs-comment">// Set counter to 1</span>
+<span class="hljs-keyword">var</span> msg = <span class="hljs-string">""</span>; <span class="hljs-comment">// Message</span>
+
+<span class="hljs-comment">// Store 5 times table in a variable</span>
+<span class="hljs-keyword">do</span> {
+  msg += i + <span class="hljs-string">" x 5 = "</span> + i * <span class="hljs-number">5</span> + <span class="hljs-string">"&lt;br /&gt;"</span>;
+  i++;
+} <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">1</span>);
+<span class="hljs-comment">// Note how this is already 1 and it still runs</span>
+
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"answer"</span>).innerHTML = msg;
+</div></code></pre>
+    <hr />
+    <h3 id="references-and-terms">REFERENCES AND TERMS:</h3>
+    <blockquote>
+      <p>
+        <img
+          class="emoji"
+          alt="information_source"
+          src="data:image/png;base64,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"
+        />
+        If you use a data type JavaScript did not expect, JavaScript tries to
+        make scense of the operation rather than reporting an error. This called
+        <code>Coercion</code>
+      </p>
+    </blockquote>
+    <div class="nav-container">
+      <h3>Navigate to:</h3>
+      <div class="navigation">
+        <a class="prev" href="../025_Truthy_and_falsy/Readme.html">
+          Previous
+        </a>
+        <a class="next" href="../027_Homeworks/Readme.html">
+          Next
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Readme.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+    <style>
+      /*---------------------------------------------------------------------------------------------
+*  Copyright (c) Microsoft Corporation. All rights reserved.
+*  Licensed under the MIT License. See License.txt in the project root for license information.
+*--------------------------------------------------------------------------------------------*/
+
+      body {
+        font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light",
+          "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+        font-size: 14px;
+        padding: 0 12px;
+        line-height: 22px;
+        word-wrap: break-word;
+        background: #3d3d3d;
+        color: white;
+      }
+
+      #code-csp-warning {
+        position: fixed;
+        top: 0;
+        right: 0;
+        color: white;
+        margin: 16px;
+        text-align: center;
+        font-size: 12px;
+        font-family: sans-serif;
+        background-color: #444444;
+        cursor: pointer;
+        padding: 6px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+      }
+
+      #code-csp-warning:hover {
+        text-decoration: none;
+        background-color: #007acc;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+
+      body.scrollBeyondLastLine {
+        margin-bottom: calc(100vh - 22px);
+      }
+
+      body.showEditorSelection .code-line {
+        position: relative;
+      }
+
+      body.showEditorSelection .code-active-line:before,
+      body.showEditorSelection .code-line:hover:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -12px;
+        height: 100%;
+      }
+
+      body.showEditorSelection li.code-active-line:before,
+      body.showEditorSelection li.code-line:hover:before {
+        left: -30px;
+      }
+
+      .vscode-light.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.15);
+      }
+
+      .vscode-light.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 160, 0, 0.7);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 160, 0, 1);
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      a {
+        color: #4080d0;
+        text-decoration: none;
+      }
+
+      a:focus,
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 1px solid -webkit-focus-ring-color;
+        outline-offset: -1px;
+      }
+
+      hr {
+        border: 0;
+        height: 2px;
+        border-bottom: 2px solid;
+      }
+
+      h1 {
+        padding-bottom: 0.3em;
+        line-height: 1.2;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: normal;
+      }
+
+      h1 code,
+      h2 code,
+      h3 code,
+      h4 code,
+      h5 code,
+      h6 code {
+        font-size: inherit;
+        line-height: auto;
+      }
+
+      a:hover {
+        color: #4080d0;
+        text-decoration: underline;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      table > thead > tr > th {
+        text-align: left;
+        border-bottom: 1px solid;
+      }
+
+      table > thead > tr > th,
+      table > thead > tr > td,
+      table > tbody > tr > th,
+      table > tbody > tr > td {
+        padding: 5px 10px;
+      }
+
+      table > tbody > tr + tr > td {
+        border-top: 1px solid;
+      }
+
+      blockquote {
+        margin: 0 7px 0 5px;
+        padding: 0 16px 0 10px;
+        border-left: 5px solid;
+      }
+
+      code {
+        font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New",
+          monospace, "Droid Sans Fallback";
+        font-size: 14px;
+        line-height: 19px;
+      }
+
+      body.wordWrap pre {
+        white-space: pre-wrap;
+      }
+
+      .mac code {
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      pre:not(.hljs),
+      pre.hljs code > div {
+        padding: 16px;
+        border-radius: 3px;
+        overflow: auto;
+      }
+
+      /** Theming */
+
+      .vscode-light,
+      .vscode-light pre code {
+        color: rgb(30, 30, 30);
+      }
+
+      .vscode-dark,
+      .vscode-dark pre code {
+        color: #ddd;
+      }
+
+      .vscode-high-contrast,
+      .vscode-high-contrast pre code {
+        color: white;
+      }
+
+      .vscode-light code {
+        color: #a31515;
+      }
+
+      .vscode-dark code {
+        color: #d7ba7d;
+      }
+
+      .vscode-light pre:not(.hljs),
+      .vscode-light code > div {
+        background-color: rgba(220, 220, 220, 0.4);
+      }
+
+      .vscode-dark pre:not(.hljs),
+      .vscode-dark code > div {
+        background-color: rgba(10, 10, 10, 0.4);
+      }
+
+      .vscode-high-contrast pre:not(.hljs),
+      .vscode-high-contrast code > div {
+        background-color: rgb(0, 0, 0);
+      }
+
+      .vscode-high-contrast h1 {
+        border-color: rgb(0, 0, 0);
+      }
+
+      .vscode-light table > thead > tr > th {
+        border-color: rgba(0, 0, 0, 0.69);
+      }
+
+      .vscode-dark table > thead > tr > th {
+        border-color: rgba(255, 255, 255, 0.69);
+      }
+
+      .vscode-light h1,
+      .vscode-light hr,
+      .vscode-light table > tbody > tr + tr > td {
+        border-color: rgba(0, 0, 0, 0.18);
+      }
+
+      .vscode-dark h1,
+      .vscode-dark hr,
+      .vscode-dark table > tbody > tr + tr > td {
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .vscode-light blockquote,
+      .vscode-dark blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .vscode-high-contrast blockquote {
+        background: transparent;
+        border-color: #fff;
+      }
+    </style>
+
+    <style>
+      /* Tomorrow Theme */
+      /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+      /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        color: #4d4d4c;
+        padding: 0.5em;
+      }
+
+      .hljs-emphasis {
+        font-style: italic;
+      }
+
+      .hljs-strong {
+        font-weight: bold;
+      }
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        padding: 0.5em;
+        background: #1e1e1e;
+        color: #dcdcdc;
+      }
+      .hljs-keyword,
+      .hljs-literal,
+      .hljs-symbol,
+      .hljs-name {
+        color: #569cd6;
+      }
+      .hljs-link {
+        color: #569cd6;
+        text-decoration: underline;
+      }
+      .hljs-built_in,
+      .hljs-type {
+        color: #4ec9b0;
+      }
+      .hljs-number,
+      .hljs-class {
+        color: #b8d7a3;
+      }
+      .hljs-string,
+      .hljs-meta-string {
+        color: #d69d85;
+      }
+      .hljs-regexp,
+      .hljs-template-tag {
+        color: #9a5334;
+      }
+      .hljs-subst,
+      .hljs-function,
+      .hljs-title,
+      .hljs-params,
+      .hljs-formula {
+        color: #dcdcdc;
+      }
+      .hljs-comment,
+      .hljs-quote {
+        color: #57a64a;
+        font-style: italic;
+      }
+      .hljs-doctag {
+        color: #608b4e;
+      }
+      .hljs-meta,
+      .hljs-meta-keyword,
+      .hljs-tag {
+        color: #9b9b9b;
+      }
+      .hljs-variable,
+      .hljs-template-variable {
+        color: #bd63c5;
+      }
+      .hljs-attr,
+      .hljs-attribute,
+      .hljs-builtin-name {
+        color: #9cdcfe;
+      }
+      .hljs-section {
+        color: gold;
+      }
+      .hljs-emphasis {
+        font-style: italic;
+      }
+      .hljs-strong {
+        font-weight: bold;
+      }
+      .hljs-bullet,
+      .hljs-selector-tag,
+      .hljs-selector-id,
+      .hljs-selector-class,
+      .hljs-selector-attr,
+      .hljs-selector-pseudo {
+        color: #d7ba7d;
+      }
+      .hljs-addition {
+        background-color: #144212;
+        display: inline-block;
+        width: 100%;
+      }
+      .hljs-deletion {
+        background-color: #600;
+        display: inline-block;
+        width: 100%;
+      }
+    </style>
+
+    <style>
+      /*
+* Markdown PDF CSS
+*/
+
+      body {
+        font-family: "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light",
+          "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+      }
+
+      pre {
+        background-color: #f8f8f8;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
+
+      pre:not(.hljs) {
+        padding: 23px;
+        line-height: 19px;
+      }
+
+      blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .emoji {
+        height: 1.4em;
+      }
+
+      /* for inline code */
+      :not(pre):not(.hljs) > code {
+        color: #c9ae75; /* Change the old color so it seems less like an error */
+        font-size: inherit;
+      }
+
+      /* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+      .page {
+        page-break-after: always;
+      }
+    </style>
+
+    <style>
+      .nav-container {
+        border: 2px solid white;
+        border-radius: 10px;
+        margin: 50px 0;
+        padding: 0 100px;
+      }
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px;
+        align-items: center;
+        font-weight: bold;
+      }
+      .navigation a {
+        color: red;
+        cursor: pointer;
+      }
+      .prev.no-link,
+      .next.no-link {
+        color: gray;
+        cursor: default;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="adding-or-removing-html-content">
+      Adding Or Removing HTML content
+    </h1>
+    <h2 id="adding-html-contents">Adding HTML contents:</h2>
+    <p>
+      There are two very different approaches to adding and removing content
+      from a DOM tree:
+    </p>
+    <ol>
+      <li><code>innerHTML</code> property.</li>
+      <li>DOM manipulation.</li>
+    </ol>
+    <h2 id="1-the-innerhtml-property">1. The innerHTML property:</h2>
+    <p>See the following figure:</p>
+    <p><img src="./adding_with_innerhtml.png" alt="adding_with_innerhtml" /></p>
+    <h2 id="2-dom-manipulation">2. DOM manipulation:</h2>
+    <p>See the following figure:</p>
+    <p><img src="./dom_manipulation.png" alt="dom_manipulation" /></p>
+    <p>
+      <strong
+        ><em
+          >DOM manipulation easily targets individual nodes in the DOM tree,
+          whereas <code>innerHTML</code> is better suited to updating entire
+          fragments.</em
+        ></strong
+      >
+    </p>
+    <p>Let us get deep wit them.</p>
+    <h2 id="innerhtml-accessing-and-updating-text-and-markup">
+      (innerHTML) Accessing and Updating text and markup
+    </h2>
+    <p>
+      Using the <code>innerHTML</code> property, you can access and modify the
+      contents of an element, including any child elements.
+    </p>
+    <p><img src="./innerHTML.png" alt="innerHTML" /></p>
+    <h3 id="get-content">GET content</h3>
+    <p>
+      To collect the content of the list item and add it to a variable called
+      <code>elContent</code>.
+    </p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-keyword">let</span> elContent = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"one"</span>).innerHTML;
+</div></code></pre>
+    <p>
+      The <code>elContent</code> variable would now hold the
+      <code>string</code>: <code>\&lt;em&gt;fresh\&lt;/em&gt; figs</code>
+    </p>
+    <h3 id="set-content">SET content</h3>
+    <p>
+      Adding content of the <code>elContent</code> variable (including any
+      markup) to the first list item:
+    </p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"one"</span>).innerHTML = elContent;
+</div></code></pre>
+    <p>example <strong>c05/js/inner-html.js</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-comment">// Store the first list item in a variable</span>
+<span class="hljs-keyword">var</span> firstItem = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"one"</span>);
+
+<span class="hljs-comment">// Get the content of the first list item</span>
+<span class="hljs-keyword">var</span> itemContent = firstItem.innerHTML;
+
+<span class="hljs-comment">// Update the content of the first list item so it is a link</span>
+firstItem.innerHTML = <span class="hljs-string">'&lt;a href="http://example.org"&gt;'</span> + itemContent + <span class="hljs-string">"&lt;/a&gt;"</span>;
+</div></code></pre>
+    <h2 id="dom-manipulation-adding-elements-using-dom-manipulation">
+      (DOM manipulation) Adding Elements using DOM manipulation
+    </h2>
+    <p>
+      DOM manipulation offers another technique to add new content to a page
+      (rather than innerHTML). It involves three steps:
+    </p>
+    <ol>
+      <li>Creating Element by using <code>createElement()</code> method.</li>
+      <li>Give it content by using <code>createTextNode()</code> method.</li>
+      <li>Add it to the DOM by using <code>appendChild()</code> method.</li>
+    </ol>
+    <p>example <strong>c05/js/add-element.js</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-comment">// Create a new element and store it in a variable.</span>
+<span class="hljs-keyword">var</span> newEl = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"li"</span>);
+
+<span class="hljs-comment">// Create a text node and store it in a variable.</span>
+<span class="hljs-keyword">var</span> newText = <span class="hljs-built_in">document</span>.createTextNode(<span class="hljs-string">"quinoa"</span>);
+
+<span class="hljs-comment">// Attach the new text node to the new element.</span>
+newEl.appendChild(newText);
+
+<span class="hljs-comment">// Find the position where the new element should be added.</span>
+<span class="hljs-keyword">var</span> position = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"ul"</span>)[<span class="hljs-number">0</span>];
+
+<span class="hljs-comment">// Insert the new element into its position.</span>
+position.appendChild(newEl);
+</div></code></pre>
+    <h2 id="removing-html-elements-via-dom-manipulation">
+      Removing HTML elements via DOM manipulation:
+    </h2>
+    <p>
+      DOM manipulation can be used to remove elements from the DOM tree. (In
+      general computer science, there is no deleting in specific meaning but
+      more that updating with empty contents or writing with empty contents).
+    </p>
+    <p>Removing will go through three steps:</p>
+    <ol>
+      <li>
+        Store the element that you want to remove in a variable (By the same way
+        of selecting elements).
+      </li>
+      <li>Store the parent of that element in a variable.</li>
+      <li>
+        Remove the element that you have stored in the first step with the
+        following
+        <code>removeChild(STORED_ELEMENT_THAT_YOU_WANT_TO_REMOVE)</code> method.
+      </li>
+    </ol>
+    <p>
+      example found in
+      <strong
+        ><a href="../Examples/c05/remove-element.html"
+          >Examples/c05/remove-element.html</a
+        ></strong
+      >
+    </p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-comment">// Store the element to be removed in a variable.</span>
+<span class="hljs-keyword">var</span> removeEl = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"li"</span>)[<span class="hljs-number">3</span>];
+
+<span class="hljs-comment">// Find the element which contains the element to be removed.</span>
+<span class="hljs-keyword">var</span> containerEl = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"ul"</span>)[<span class="hljs-number">0</span>];
+
+<span class="hljs-comment">// Remove the element.</span>
+containerEl.removeChild(removeEl);
+</div></code></pre>
+    <h2 id="comparing-techniques">Comparing techniques:</h2>
+    <h3 id="advantages">Advantages:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>element.innerHTML</th>
+          <th>DOM manipulation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            1. You can use it to add a lot of new markup using less code than
+            DOM manipulation methods.
+          </td>
+          <td>
+            1. It is suited to changing one element from a DOM fragment where
+            there are many siblings.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2. It can be faster than DOM manipulation when adding a lot of new
+            elements to a web page.
+          </td>
+          <td>2. It does not affective handlers.</td>
+        </tr>
+        <tr>
+          <td>
+            3. It is a simple way to remove all of the content from one element
+            (by assigning it a blank string).
+          </td>
+          <td>
+            3. It easily allows a script to add elements incrementally (when you
+            do not want to alter a lot of code at once)
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="disadvantages">Disadvantages:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>element.innerHTML</th>
+          <th>DOM manipulation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            1. It should not be used to add content that has come from a user
+            (such as a username or blog comment), as it can pose a significant
+            security risk which is discussed next
+          </td>
+          <td>
+            1. If you have to make a lot of changes to the content of a page, it
+            is slower than <code>innerHTML</code>.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2. It can be difficult to isolate single elements that you want to
+            update within a larger DOM
+          </td>
+          <td>
+            2. You need to write more code to achieve the same thing compared
+            with <code>innerHTML</code>.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Take a look at the same example of &lt;li&gt; elements bellow. Each one
+      adds some more markup and, as a result, the fragment of the DOM tree for
+      each list item is very different.
+    </p>
+    <div class="nav-container">
+      <h3>Navigate to:</h3>
+      <div class="navigation">
+        <a class="prev" href="../032_get_update_element_content/Readme.html">
+          Previous
+        </a>
+        <a class="next" href="../034_Cross_site_scripting_XSS/Readme.html">
+          Next
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

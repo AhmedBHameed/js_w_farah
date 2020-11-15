@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: lightgrey;
+}
+
+header {
+  height: 70px;
+  background: brown;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 5rem;
+}
+
+h2 {
+  margin: 0;
+}
+
+.container {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.container .filter {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0;
+}
+
+.container .filter .search {
+  width: 45%;
+  padding: 10px;
+}
+
+.container .filter .years {
+  width: 45%;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+}
+table thead {
+  display: flex;
+  justify-content: space-between;
+}
+table thead {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Readme.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+    <style>
+      /*---------------------------------------------------------------------------------------------
+*  Copyright (c) Microsoft Corporation. All rights reserved.
+*  Licensed under the MIT License. See License.txt in the project root for license information.
+*--------------------------------------------------------------------------------------------*/
+
+      body {
+        font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light",
+          "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+        font-size: 14px;
+        padding: 0 12px;
+        line-height: 22px;
+        word-wrap: break-word;
+        background: #3d3d3d;
+        color: white;
+      }
+
+      #code-csp-warning {
+        position: fixed;
+        top: 0;
+        right: 0;
+        color: white;
+        margin: 16px;
+        text-align: center;
+        font-size: 12px;
+        font-family: sans-serif;
+        background-color: #444444;
+        cursor: pointer;
+        padding: 6px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+      }
+
+      #code-csp-warning:hover {
+        text-decoration: none;
+        background-color: #007acc;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+
+      body.scrollBeyondLastLine {
+        margin-bottom: calc(100vh - 22px);
+      }
+
+      body.showEditorSelection .code-line {
+        position: relative;
+      }
+
+      body.showEditorSelection .code-active-line:before,
+      body.showEditorSelection .code-line:hover:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -12px;
+        height: 100%;
+      }
+
+      body.showEditorSelection li.code-active-line:before,
+      body.showEditorSelection li.code-line:hover:before {
+        left: -30px;
+      }
+
+      .vscode-light.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.15);
+      }
+
+      .vscode-light.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 160, 0, 0.7);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 160, 0, 1);
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      a {
+        color: #4080d0;
+        text-decoration: none;
+      }
+
+      a:focus,
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 1px solid -webkit-focus-ring-color;
+        outline-offset: -1px;
+      }
+
+      hr {
+        border: 0;
+        height: 2px;
+        border-bottom: 2px solid;
+      }
+
+      h1 {
+        padding-bottom: 0.3em;
+        line-height: 1.2;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: normal;
+      }
+
+      h1 code,
+      h2 code,
+      h3 code,
+      h4 code,
+      h5 code,
+      h6 code {
+        font-size: inherit;
+        line-height: auto;
+      }
+
+      a:hover {
+        color: #4080d0;
+        text-decoration: underline;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      table > thead > tr > th {
+        text-align: left;
+        border-bottom: 1px solid;
+      }
+
+      table > thead > tr > th,
+      table > thead > tr > td,
+      table > tbody > tr > th,
+      table > tbody > tr > td {
+        padding: 5px 10px;
+      }
+
+      table > tbody > tr + tr > td {
+        border-top: 1px solid;
+      }
+
+      blockquote {
+        margin: 0 7px 0 5px;
+        padding: 0 16px 0 10px;
+        border-left: 5px solid;
+      }
+
+      code {
+        font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New",
+          monospace, "Droid Sans Fallback";
+        font-size: 14px;
+        line-height: 19px;
+      }
+
+      body.wordWrap pre {
+        white-space: pre-wrap;
+      }
+
+      .mac code {
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      pre:not(.hljs),
+      pre.hljs code > div {
+        padding: 16px;
+        border-radius: 3px;
+        overflow: auto;
+      }
+
+      /** Theming */
+
+      .vscode-light,
+      .vscode-light pre code {
+        color: rgb(30, 30, 30);
+      }
+
+      .vscode-dark,
+      .vscode-dark pre code {
+        color: #ddd;
+      }
+
+      .vscode-high-contrast,
+      .vscode-high-contrast pre code {
+        color: white;
+      }
+
+      .vscode-light code {
+        color: #a31515;
+      }
+
+      .vscode-dark code {
+        color: #d7ba7d;
+      }
+
+      .vscode-light pre:not(.hljs),
+      .vscode-light code > div {
+        background-color: rgba(220, 220, 220, 0.4);
+      }
+
+      .vscode-dark pre:not(.hljs),
+      .vscode-dark code > div {
+        background-color: rgba(10, 10, 10, 0.4);
+      }
+
+      .vscode-high-contrast pre:not(.hljs),
+      .vscode-high-contrast code > div {
+        background-color: rgb(0, 0, 0);
+      }
+
+      .vscode-high-contrast h1 {
+        border-color: rgb(0, 0, 0);
+      }
+
+      .vscode-light table > thead > tr > th {
+        border-color: rgba(0, 0, 0, 0.69);
+      }
+
+      .vscode-dark table > thead > tr > th {
+        border-color: rgba(255, 255, 255, 0.69);
+      }
+
+      .vscode-light h1,
+      .vscode-light hr,
+      .vscode-light table > tbody > tr + tr > td {
+        border-color: rgba(0, 0, 0, 0.18);
+      }
+
+      .vscode-dark h1,
+      .vscode-dark hr,
+      .vscode-dark table > tbody > tr + tr > td {
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .vscode-light blockquote,
+      .vscode-dark blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .vscode-high-contrast blockquote {
+        background: transparent;
+        border-color: #fff;
+      }
+    </style>
+
+    <style>
+      /* Tomorrow Theme */
+      /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+      /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        color: #4d4d4c;
+        padding: 0.5em;
+      }
+
+      .hljs-emphasis {
+        font-style: italic;
+      }
+
+      .hljs-strong {
+        font-weight: bold;
+      }
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        padding: 0.5em;
+        background: #1e1e1e;
+        color: #dcdcdc;
+      }
+      .hljs-keyword,
+      .hljs-literal,
+      .hljs-symbol,
+      .hljs-name {
+        color: #569cd6;
+      }
+      .hljs-link {
+        color: #569cd6;
+        text-decoration: underline;
+      }
+      .hljs-built_in,
+      .hljs-type {
+        color: #4ec9b0;
+      }
+      .hljs-number,
+      .hljs-class {
+        color: #b8d7a3;
+      }
+      .hljs-string,
+      .hljs-meta-string {
+        color: #d69d85;
+      }
+      .hljs-regexp,
+      .hljs-template-tag {
+        color: #9a5334;
+      }
+      .hljs-subst,
+      .hljs-function,
+      .hljs-title,
+      .hljs-params,
+      .hljs-formula {
+        color: #dcdcdc;
+      }
+      .hljs-comment,
+      .hljs-quote {
+        color: #57a64a;
+        font-style: italic;
+      }
+      .hljs-doctag {
+        color: #608b4e;
+      }
+      .hljs-meta,
+      .hljs-meta-keyword,
+      .hljs-tag {
+        color: #9b9b9b;
+      }
+      .hljs-variable,
+      .hljs-template-variable {
+        color: #bd63c5;
+      }
+      .hljs-attr,
+      .hljs-attribute,
+      .hljs-builtin-name {
+        color: #9cdcfe;
+      }
+      .hljs-section {
+        color: gold;
+      }
+      .hljs-emphasis {
+        font-style: italic;
+      }
+      .hljs-strong {
+        font-weight: bold;
+      }
+      .hljs-bullet,
+      .hljs-selector-tag,
+      .hljs-selector-id,
+      .hljs-selector-class,
+      .hljs-selector-attr,
+      .hljs-selector-pseudo {
+        color: #d7ba7d;
+      }
+      .hljs-addition {
+        background-color: #144212;
+        display: inline-block;
+        width: 100%;
+      }
+      .hljs-deletion {
+        background-color: #600;
+        display: inline-block;
+        width: 100%;
+      }
+    </style>
+
+    <style>
+      /*
+* Markdown PDF CSS
+*/
+
+      body {
+        font-family: "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light",
+          "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+      }
+
+      pre {
+        background-color: #f8f8f8;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
+
+      pre:not(.hljs) {
+        padding: 23px;
+        line-height: 19px;
+      }
+
+      blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .emoji {
+        height: 1.4em;
+      }
+
+      /* for inline code */
+      :not(pre):not(.hljs) > code {
+        color: #c9ae75; /* Change the old color so it seems less like an error */
+        font-size: inherit;
+      }
+
+      /* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+      .page {
+        page-break-after: always;
+      }
+    </style>
+
+    <style>
+      .nav-container {
+        border: 2px solid white;
+        border-radius: 10px;
+        margin: 50px 0;
+        padding: 0 100px;
+      }
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px;
+        align-items: center;
+        font-weight: bold;
+      }
+      .navigation a {
+        color: red;
+        cursor: pointer;
+      }
+      .prev.no-link,
+      .next.no-link {
+        color: gray;
+        cursor: default;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="how-to-getupdate-element-content">
+      How to GET/UPDATE element content
+    </h1>
+    <p>
+      So far this chapter has focused on finding elements in the DOM tree. The
+      rest of this chapter shows how to access/update element content. Your
+      choice of techniques depends upon what the element contains.
+    </p>
+    <p>
+      Take a look at the same example of &lt;li&gt; elements bellow. Each one
+      adds some more markup and, as a result, the fragment of the DOM tree for
+      each list item is very different.
+    </p>
+    <p><strong>HTML</strong></p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"one"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hot"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>fresh<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> figs<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"two"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hot"</span>&gt;</span>pine nuts<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"three"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hot"</span>&gt;</span>honey<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"four"</span>&gt;</span>balsamic vinegar<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div></code></pre>
+    <p>From the example we can:</p>
+    <ol>
+      <li>
+        <strong>Navigate to the text node</strong>. This works best when the
+        element contains only text, no other elements.
+      </li>
+      <li>
+        <strong>Work with the containing element</strong>. This allows you to
+        access its text nodes and child elements. It works better when an
+        element has text nodes and child elements that are siblings.
+      </li>
+    </ol>
+    <h3 id="1-text-nodes-navigate-to-the-text-nodeleave-it-if-you-can">
+      1. TEXT NODES (Navigate to the text node)(Leave it if you can!):
+    </h3>
+    <p>
+      Once you have navigated from an element to its text node, there is one
+      property that you will commonly
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>nodeValue</code></td>
+          <td>Access text from node</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><img src="./text_node.png" alt="text_node" /></p>
+    <h3 id="2-containing-element-work-with-the-containing-element">
+      2. CONTAINING ELEMENT (Work with the containing element):
+    </h3>
+    <p>
+      When you are working with an element node (rather than its text node),
+      that element can contain markup. You have to choose whether you want to
+      retrieve (get) or update (set) the markup as well as t he text.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>innerHTML</code></td>
+          <td>Get/Set text and markup</td>
+        </tr>
+        <tr>
+          <td><code>textContent</code></td>
+          <td>Get/Set text only</td>
+        </tr>
+        <tr>
+          <td><code>innerText</code></td>
+          <td>Get/Set text only (Microsoft invention)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      <code>textContent</code> is the same <code>innerText</code> but the last
+      one is effected by browser rendering.
+    </p>
+    <p><img src="./containing_element.png" alt="containing_element" /></p>
+    <hr />
+    <p>Ok let go through those properties in depth:</p>
+    <h2 id="text-nodes-accessing-and-updating-a-text-node">
+      (TEXT NODES) Accessing and Updating a text node
+    </h2>
+    <p>
+      When you select a text node, you can retrieve or modify the content of it
+      using the node Value property.
+    </p>
+    <p><img src="./nodeValue.png" alt="nodeValue" /></p>
+    <ol>
+      <li>
+        The &lt;li&gt; element node is selected using the getElementById()
+        method.
+      </li>
+      <li>The first child of &lt;li&gt; is the &lt;em&gt; element.</li>
+      <li>The text node is the next sibling of that &lt;em&gt; element.</li>
+      <li>
+        You have the text node and can access its contents using
+        <code>nodeValue</code>.
+      </li>
+    </ol>
+    <p>
+      example found in
+      <strong
+        ><a href="../Examples/c05/node-value.html"
+          >Examples/c05/node-value.html</a
+        ></strong
+      >
+    </p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-keyword">var</span> itemTwo = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"two"</span>); <span class="hljs-comment">// Get second list item</span>
+<span class="hljs-keyword">var</span> elText = itemTwo.firstChild.nodeValue; <span class="hljs-comment">// Get its text content and not working in Chrome.</span>
+<span class="hljs-comment">// Chrome version</span>
+<span class="hljs-comment">// var elText = itemTwo.childNodes[0].nodeValue // result "pine nuts"</span>
+elText = elText.replace(<span class="hljs-string">"pine nuts"</span>, <span class="hljs-string">"kale"</span>); <span class="hljs-comment">// Change pine nuts to kale</span>
+itemTwo.firstChild.nodeValue = elText; <span class="hljs-comment">// Update the list item</span>
+</div></code></pre>
+    <h2 id="containing-element-access-update-text-with-textcontent-innertext">
+      (CONTAINING ELEMENT) ACCESS &amp; UPDATE TEXT WITH (TEXTCONTENT &amp;
+      INNERTEXT)
+    </h2>
+    <h4 id="textcontent">textContent:</h4>
+    <p>
+      The <code>textContent</code> property allows you to collect or update just
+      the text that is in the containing element (and its children AGAIN with
+      its children).
+    </p>
+    <p><img src="./textContent.png" alt="textContent" /></p>
+    <p>
+      To collect the text fromt he &lt;li&gt; elements in our example (and
+      ignore any markup inside the element) you can use the
+      <code>textContent</code> property on the containing &lt;li&gt; element. In
+      this case it would return the value of
+      <strong><code>&quot;fresh figs&quot;</code></strong
+      >.
+    </p>
+    <h4 id="innertext">innerText:</h4>
+    <p>
+      You may also come across a property called <code>innerText</code>, but you
+      should generally avoid it for three key reasons:
+    </p>
+    <ol>
+      <li>Browser Support.</li>
+      <li>
+        Effected by CSS: When the element taking
+        <code>visibility: hidden;</code> style, then it will not showing any
+        text.
+      </li>
+      <li>Performance.</li>
+    </ol>
+    <p>
+      example found in
+      <strong
+        ><a href="../Examples/c05/inner-text-and-text-content.html"
+          >Examples/c05/inner-text-and-text-content.html</a
+        ></strong
+      >
+    </p>
+    <pre
+      class="hljs"
+    ><code><div><span class="hljs-keyword">var</span> firstItem = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"one"</span>); <span class="hljs-comment">// Find first list item</span>
+<span class="hljs-keyword">var</span> showTextContent = firstItem.textContent; <span class="hljs-comment">// Get value of textContent</span>
+<span class="hljs-keyword">var</span> showInnerText = firstItem.innerText; <span class="hljs-comment">// Get value of innerText</span>
+
+<span class="hljs-comment">// Show the content of these two properties at the end of the list</span>
+<span class="hljs-keyword">var</span> msg = <span class="hljs-string">"&lt;p&gt;textContent: "</span> + showTextContent + <span class="hljs-string">"&lt;/p&gt;"</span>;
+msg += <span class="hljs-string">"&lt;p&gt;innerText: "</span> + showInnerText + <span class="hljs-string">"&lt;/p&gt;"</span>;
+<span class="hljs-keyword">var</span> el = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"scriptResults"</span>);
+el.innerHTML = msg;
+
+firstItem.textContent = <span class="hljs-string">"sourdough bread"</span>; <span class="hljs-comment">// Update the first list item</span>
+</div></code></pre>
+    <div class="nav-container">
+      <h3>Navigate to:</h3>
+      <div class="navigation">
+        <a class="prev" href="../031_Traversubg_the_dom/Readme.html">
+          Previous
+        </a>
+        <a class="next" href="../033_Adding_removing_html_content/Readme.html">
+          Next
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

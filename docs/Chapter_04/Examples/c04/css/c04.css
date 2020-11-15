@@ -1,0 +1,83 @@
+@import url(http://fonts.googleapis.com/css?family=Wellfleet);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  background-color: #523620;
+  color: #fff;
+  font-family: "Wellfleet", times, serif;
+  font-size: 150%;
+  margin: 0px 0px 0px 0px;
+}
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+}
+h1 {
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+#teacher {
+  float: right;
+  margin: 0px 30px 0px 0px;
+}
+#teacher2 {
+  float: right;
+}
+
+#page1,
+#page2 {
+  background-color: #fecc6f;
+  height: 596px;
+  padding: 10px;
+  min-width: 779px;
+}
+#page2 {
+  height: 100%;
+}
+
+#answer {
+  border: 12px double #fff;
+  color: #523620;
+  text-align: left;
+  padding: 20px;
+  margin: 70px auto 10px auto;
+  width: 250px;
+  text-align: center;
+}
+
+#blackboard {
+  background-color: #425a5a;
+  border: 25px solid #523620;
+  border-radius: 20px;
+  padding: 40px 20px;
+  margin: 0px auto;
+  /* height: 370px; */
+  width: 600px;
+  text-align: center;
+}
+
+.operators {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 600px;
+  margin: 1rem auto;
+}
+
+.operators .sub button,
+.operators .multiplication button,
+.operators .division button {
+  background: brown;
+  color: white;
+  font-weight: bold;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}

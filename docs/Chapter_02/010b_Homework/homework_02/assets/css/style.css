@@ -1,0 +1,21 @@
+body {
+  height: 100vh;
+  background: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  height: 300px;
+  width: 50%;
+  border-radius: 15px;
+  background: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-title {
+  text-align: center;
+}
